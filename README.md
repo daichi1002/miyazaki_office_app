@@ -23,5 +23,5 @@ docker-compose up (-d)
 
 3.MySQL接続
 ```
-docker-compose run api bundle exec rake db:create
+docker-compose run backend bundle exec rails db:create
 ```
