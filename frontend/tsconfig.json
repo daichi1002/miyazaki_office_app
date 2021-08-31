@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "allowSyntheticDefaultImports": true,
+      "outDir": "./dist/",
+      "sourceMap": true,
+      "noImplicitAny": true,
+      "module": "commonjs",
+      //厳密な型チェックオプションを有効に
+      "strict": true,
+      "target": "esnext",
+      "jsx": "react",
+      "lib": ["dom", "es2015", "es2017"]
+    },
+    "include": ["./src/**/*"]
+  }
