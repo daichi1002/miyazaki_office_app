@@ -1,5 +1,5 @@
 import React from "react";
-import GenericTemplate from "../templates/GenericTemplates";
+import GenericTemplate from "../components/templates/GenericTemplates";
 
 const ProductPage: React.FC = () => {
   return (
