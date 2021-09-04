@@ -1,7 +1,11 @@
-import React from "react"
+import React from "react";
+import GenericTemplate from "./components/templates/GenericTemplates";
+const HomePage: React.FC = () => {
+  return (
+    <GenericTemplate title="トップページ">
+      <>トップページ内容</>
+    </GenericTemplate>
+  );
+};
 
-export const  Home = () => {
-  return <div>Hello world!</div>
-}
-
-export default Home
+export default HomePage;
