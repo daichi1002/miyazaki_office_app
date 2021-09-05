@@ -1,5 +1,5 @@
-import React from "react";
-import GenericTemplate from "../components/templates/GenericTemplates";
+import React from 'react';
+import GenericTemplate from '../components/templates/GenericTemplates';
 const HomePage: React.FC = () => {
   return (
     <GenericTemplate title="トップページ">
