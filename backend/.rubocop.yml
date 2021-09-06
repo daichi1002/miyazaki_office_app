@@ -1,0 +1,52 @@
+# 余裕できたら以下のフォルダにそれぞれ設定を書いていきたい
+# inherit_from:
+#   - config/rubocop/rubocop.yml
+#   - config/rubocop/rails.yml
+#   - config/rubocop/rspec.yml
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  # 除外
+  Exclude:
+    - "tmp/**/*"
+    - "config/initializers/*"
+    - "vendor/**/*"
+    - "db/schema.rb"
+    - "node_modules/**/*"
+    - "db/migrate/*.rb"
+    - "bin/*"
+  DisplayCopNames: true
+  TargetRubyVersion: 3.0.2
+
+Rails:
+  Enabled: true
+
+##################### Style ##################################
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# クラスのコメント必須を無視
+Style/Documentation:
+  Enabled: false
+
+# モジュール名::クラス名の定義を許可
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# 文字リテラルのイミュータブル宣言を無視
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# ダブルクオーテーションに統一
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+##################### Layout ##################################
+
+# private/protected は一段深くインデントする
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
