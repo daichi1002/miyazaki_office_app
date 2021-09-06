@@ -131,18 +131,28 @@ const useStyles = makeStyles((theme: Theme) =>
       textDecoration: 'none',
       color: theme.palette.text.secondary,
     },
+    footer: {
+      display: 'block',
+      width: '100%',
+      position: 'fixed',
+      left: 0,
+      bottom: 0,
+      zIndex: 1000,
+      textAlign: 'center',
+    },
   })
 )
 
 const Copyright = () => {
+  const classes = useStyles()
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography className={classes.footer} variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" to="/">
         管理画面
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'}
+      {'.Vitalize'}
     </Typography>
   )
 }
@@ -154,7 +164,7 @@ export interface GenericTemplateProps {
 
 const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) => {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(true)
+  const [open, setOpen] = React.useState(false)
   const handleDrawerOpen = () => {
     setOpen(true)
   }
@@ -207,7 +217,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary="トップページ" />
+                <ListItemText primary="値入力" />
               </ListItem>
             </Link>
             <Link to="/ProductPage" className={classes.link}>
@@ -215,7 +225,31 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemIcon>
                   <ShoppingCartIcon />
                 </ListItemIcon>
-                <ListItemText primary="商品ページ" />
+                <ListItemText primary="商品" />
+              </ListItem>
+            </Link>
+            <Link to="/inventory" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon>
+                  <ShoppingCartIcon />
+                </ListItemIcon>
+                <ListItemText primary="在庫" />
+              </ListItem>
+            </Link>
+            <Link to="/mobx" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon>
+                  <ShoppingCartIcon />
+                </ListItemIcon>
+                <ListItemText primary="mobx練習" />
+              </ListItem>
+            </Link>
+            <Link to="/useEffect" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon>
+                  <ShoppingCartIcon />
+                </ListItemIcon>
+                <ListItemText primary="hooks練習" />
               </ListItem>
             </Link>
           </List>
