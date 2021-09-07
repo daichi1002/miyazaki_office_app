@@ -53,3 +53,4 @@ gem "graphql"
 gem "rmagick"
 gem "slack-notifier"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+gem "ridgepole", ">= 0.7.22"
