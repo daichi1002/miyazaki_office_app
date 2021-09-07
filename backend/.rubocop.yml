@@ -6,6 +6,7 @@
 require:
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-performance
 
 AllCops:
   # 除外
@@ -45,8 +46,29 @@ Style/FrozenStringLiteralComment:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
+# ローカル変数とメソッドの呼び出しの区別をつける
+Style/RedundantSelf:
+  Enabled: false
+
 ##################### Layout ##################################
 
 # private/protected は一段深くインデントする
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods
+
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: false
+
+##################### Metrics ##################################
+
+# メソッド名の長さを最長20文字に
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
+
+##################### Metrics ##################################
+
+# 3文字未満だと指摘される設定を無効
+Naming/MethodParameterName:
+  Enabled: false
