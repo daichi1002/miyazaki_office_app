@@ -1,0 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "receipt_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  t.integer "history_id"
+  t.string "image"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end

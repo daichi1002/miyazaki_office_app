@@ -171,11 +171,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    rails_db (2.4.1)
+    rails_db (2.2.1)
       activerecord
       kaminari
       rails (>= 5.0.0)
-      ransack (>= 2.3.2)
+      ransack
       simple_form (>= 5.0.1)
       terminal-table
     railties (6.1.4.1)
@@ -288,7 +288,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 6.1.4, >= 6.1.4.1)
-  rails_db
+  rails_db (= 2.2.1)
   ridgepole (>= 0.7.22)
   rmagick
   rspec-rails

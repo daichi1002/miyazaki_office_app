@@ -1,0 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'histories.schema'
+require 'history_details.schema'
+require 'inventory_details.schema'
+require 'item_masters.schema'
+require 'receipt_images.schema'
+require 'users.schema'
