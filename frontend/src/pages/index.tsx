@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
             <Paper className={fixedHeightPaper}>テスト</Paper>
           </Grid>
           <Grid item xs={12}>
-            {posts.slice(0, 4).map((contentObj) => getCardContent(contentObj))}
+            {posts.slice(0, 3).map((contentObj) => getCardContent(contentObj))}
           </Grid>
         </Grid>
         <Box pt={4}></Box>
