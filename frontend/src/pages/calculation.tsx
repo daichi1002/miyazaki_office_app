@@ -21,10 +21,10 @@ const Calculation = () => {
       borderRadius: '30',
     },
     searchField: {
-      height: '40vh',
+      height: '20vh',
     },
     resultField: {
-      height: '6vh',
+      height: '50vh',
     },
   }))
   const classes = useStyles()

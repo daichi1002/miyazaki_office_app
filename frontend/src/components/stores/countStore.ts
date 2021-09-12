@@ -19,6 +19,7 @@ export class CountStore {
       count: observable,
       getDoubleCount: computed,
       setIncrementCount: action,
+      setDecrimentCount: action,
     })
   }
 }

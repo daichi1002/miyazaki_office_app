@@ -29,15 +29,17 @@ services:
     build:
       context: ./frontend/
       dockerfile: Dockerfile
-    command: "gatsby develop  --host=0.0.0.0"
+    command: "gatsby develop  -H 0.0.0.0"
     container_name: gatsby
     volumes:
-      - ./frontend:/usr/src/app
+      - ./frontend:/miyazaki_office_app
     ports:
       - "8000:8000"
       - "9000:9000"
     environment:
       - NODE_ENV=development
+      - GATSBY_WEBPACK_PUBLICPATH=/
+      - CHOKIDAR_USEPOLLING=1
     stdin_open: true
 volumes:
   mysql-data:
