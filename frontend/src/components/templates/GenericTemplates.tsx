@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@material-ui/core/styles'
 import * as colors from '@material-ui/core/colors'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles'
@@ -26,7 +26,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 
 const drawerWidth = 240
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: [
       'Noto Sans JP',
@@ -118,8 +118,8 @@ const useStyles = makeStyles((theme: Theme) =>
       overflow: 'auto',
     },
     container: {
-      paddingTop: theme.spacing(4),
-      paddingBottom: theme.spacing(4),
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
     },
     paper: {
       padding: theme.spacing(2),

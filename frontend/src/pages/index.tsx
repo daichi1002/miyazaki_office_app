@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
-import Props from '../components/molecules/BodyCard'
+import { Props } from '../components/molecules/BodyCard'
 
 const HomePage: React.FC = () => {
   const [posts, setPosts] = React.useState([])
@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
             <Paper className={fixedHeightPaper}>テスト</Paper>
           </Grid>
           <Grid item xs={12}>
-            {posts.slice(0, 4).map((contentObj) => getCardContent(contentObj))}
+            {posts.slice(0, 3).map((contentObj) => getCardContent(contentObj))}
           </Grid>
         </Grid>
         <Box pt={4}></Box>
