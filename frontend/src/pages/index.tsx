@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
-import Props from '../components/molecules/BodyCard'
+import { Props } from '../components/molecules/BodyCard'
 
 const HomePage: React.FC = () => {
   const [posts, setPosts] = React.useState([])

@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
+import Form from '../components/organisms/form'
 
 const Calculation = () => {
   const useStyles = makeStyles((theme) => ({
@@ -26,6 +27,12 @@ const Calculation = () => {
     resultField: {
       height: '50vh',
     },
+    pullDown: {
+      width: '300px',
+    },
+    fieldposition: {
+      justifyContent: 'end',
+    },
   }))
   const classes = useStyles()
   const searchFieldPaper = clsx(classes.paper, classes.searchField)
@@ -35,7 +42,11 @@ const Calculation = () => {
       <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={12} lg={12}>
-            <Paper className={searchFieldPaper}>スト</Paper>
+            <Paper className={searchFieldPaper}>
+              <Grid item xs={4} md={4} lg={4} className={classes.fieldposition}>
+                <Form />
+              </Grid>
+            </Paper>
           </Grid>
           <Grid item xs={12} md={12} lg={12}>
             <Paper className={resultFieldPaper}>テスト</Paper>
