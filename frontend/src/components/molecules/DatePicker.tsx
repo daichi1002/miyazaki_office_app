@@ -7,7 +7,7 @@ export const Calendar = () => {
   const [startDate, endDate] = dateRange
   const { control } = useForm({
     defaultValues: {
-      Calendar: new Date(),
+      Calendar: null,
     },
   })
   return (
@@ -20,9 +20,7 @@ export const Calendar = () => {
           selectsRange={true}
           startDate={startDate}
           endDate={endDate}
-          onChange={(update: null => {
-            setDateRange(update)
-          }}
+          onChange={(update) => {}}
           selected={field.value}
         />
       )}

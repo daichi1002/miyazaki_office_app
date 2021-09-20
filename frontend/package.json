@@ -22,6 +22,7 @@
     "axios": "^0.21.4",
     "babel-preset-gatsby": "^1.13.0",
     "gatsby": "^3.12.1",
+    "gatsby-plugin-material-ui": "^3.0.1",
     "mobx": "^6.3.3",
     "mobx-react": "^7.2.0",
     "react": "^17.0.1",

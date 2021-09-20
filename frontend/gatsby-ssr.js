@@ -1,3 +1,3 @@
-import wrapWithProvider from './wrap-with-provider'
+import systemProvider from './wrap-with-provider'
 
-export const wrapRootElement = wrapWithProvider
+export const wrapRootElement = systemProvider
