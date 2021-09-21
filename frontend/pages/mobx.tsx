@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { action, observable } from 'mobx'
 import { observer, Provider } from 'mobx-react'
 import Button from '@material-ui/core/Button'
@@ -7,15 +7,15 @@ import { useStores } from '../hooks/use-stores'
 
 const App = observer(() => {
   const { countStore } = useStores()
-  const [count, setCount] = React.useState(0)
+  const [count, setCount] = useState(0)
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${count}回クリックされました`
     console.log(`再レンダーされました`)
   }, [])
 
   return (
-    <GenericTemplate title="mobxpractice">
+    <Fragment>
       {/*     variant?: 'text' | 'outlined' | 'contained'; */}
       <Button
         variant="contained"
@@ -39,7 +39,7 @@ const App = observer(() => {
       <div>{count}</div>
       <button onClick={() => setCount(count + 1)}>++</button>
       <button onClick={() => setCount(count - 1)}>--</button>
-    </GenericTemplate>
+    </Fragment>
   )
 })
 

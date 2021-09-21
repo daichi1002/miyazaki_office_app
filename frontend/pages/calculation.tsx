@@ -34,21 +34,19 @@ const Calculation = () => {
   const searchFieldPaper = clsx(classes.paper, classes.fieldposition)
   const resultFieldPaper = clsx(classes.paper, classes.resultField)
   return (
-    <GenericTemplate title="経費計算">
-      <Container maxWidth="lg">
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={12} lg={12}>
-            <Paper className={searchFieldPaper}>
-              <Form />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={12} lg={12}>
-            <Paper className={resultFieldPaper}>テスト</Paper>
-          </Grid>
+    <Container maxWidth="lg">
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={12} lg={12}>
+          <Paper className={searchFieldPaper}>
+            <Form />
+          </Paper>
         </Grid>
-        <Box pt={4} />
-      </Container>
-    </GenericTemplate>
+        <Grid item xs={12} md={12} lg={12}>
+          <Paper className={resultFieldPaper}>テスト</Paper>
+        </Grid>
+      </Grid>
+      <Box pt={4} />
+    </Container>
   )
 }
 
