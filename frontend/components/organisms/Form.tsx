@@ -1,15 +1,16 @@
 import React from 'react'
 import Calendar from '../molecules/DatePicker'
+import { observer } from 'mobx-react'
 import { Grid } from '@material-ui/core'
 import { useForm, Controller } from 'react-hook-form'
 import { Button, MenuItem } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 import PullDown from '../molecules/PullDown'
 
-export const Form = () => {
+export const Form = observer(() => {
   const { handleSubmit } = useForm()
   const onSubmit = () => {}
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     flexPosition: {
       justifyContent: 'flex-end',
     },
@@ -26,4 +27,4 @@ export const Form = () => {
       </Grid>
     </form>
   )
-}
+})
