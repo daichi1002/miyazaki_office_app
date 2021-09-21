@@ -20,7 +20,7 @@ export const Calendar = () => {
           selectsRange={true}
           startDate={startDate}
           endDate={endDate}
-          onChange={(update: null => {
+          onChange={(update: null) => {
             setDateRange(update)
           }}
           selected={field.value}
