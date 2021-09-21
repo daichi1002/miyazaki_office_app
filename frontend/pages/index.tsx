@@ -50,23 +50,20 @@ const HomePage: React.FC = () => {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   return (
-    <GenericTemplate title="トップページ">
-      <>トップページ内容</>
-      <Container maxWidth="lg" className={classes.container}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={6}>
-            <Paper className={fixedHeightPaper}>テスト</Paper>
-          </Grid>
-          <Grid item xs={12} md={6} lg={6}>
-            <Paper className={fixedHeightPaper}>テスト</Paper>
-          </Grid>
-          <Grid item xs={12}>
-            {posts.slice(0, 3).map((contentObj) => getCardContent(contentObj))}
-          </Grid>
+    <Container maxWidth="lg" className={classes.container}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={6} lg={6}>
+          <Paper className={fixedHeightPaper}>テスト</Paper>
         </Grid>
-        <Box pt={4}></Box>
-      </Container>
-    </GenericTemplate>
+        <Grid item xs={12} md={6} lg={6}>
+          <Paper className={fixedHeightPaper}>テスト</Paper>
+        </Grid>
+        <Grid item xs={12}>
+          {posts.slice(0, 3).map((contentObj) => getCardContent(contentObj))}
+        </Grid>
+      </Grid>
+      <Box pt={4}></Box>
+    </Container>
   )
 }
 

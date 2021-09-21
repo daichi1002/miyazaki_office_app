@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
-import Form from '../components/organisms/form'
+import { Form } from '../components/organisms/Form'
 
 const Calculation = () => {
   const useStyles = makeStyles((theme) => ({
@@ -16,7 +16,6 @@ const Calculation = () => {
     },
     paper: {
       padding: theme.spacing(2),
-      display: 'flex',
       overflow: 'auto',
       flexDirection: 'column',
       borderRadius: '30',
@@ -27,34 +26,27 @@ const Calculation = () => {
     resultField: {
       height: '50vh',
     },
-    pullDown: {
-      width: '300px',
-    },
     fieldposition: {
       justifyContent: 'end',
     },
   }))
   const classes = useStyles()
-  const searchFieldPaper = clsx(classes.paper, classes.searchField)
+  const searchFieldPaper = clsx(classes.paper, classes.fieldposition)
   const resultFieldPaper = clsx(classes.paper, classes.resultField)
   return (
-    <GenericTemplate title="経費計算">
-      <Container maxWidth="lg" className={classes.container}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={12} lg={12}>
-            <Paper className={searchFieldPaper}>
-              <Grid item xs={4} md={4} lg={4} className={classes.fieldposition}>
-                <Form />
-              </Grid>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={12} lg={12}>
-            <Paper className={resultFieldPaper}>テスト</Paper>
-          </Grid>
+    <Container maxWidth="lg">
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={12} lg={12}>
+          <Paper className={searchFieldPaper}>
+            <Form />
+          </Paper>
         </Grid>
-        <Box pt={4}></Box>
-      </Container>
-    </GenericTemplate>
+        <Grid item xs={12} md={12} lg={12}>
+          <Paper className={resultFieldPaper}>テスト</Paper>
+        </Grid>
+      </Grid>
+      <Box pt={4} />
+    </Container>
   )
 }
 

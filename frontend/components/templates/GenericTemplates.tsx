@@ -14,7 +14,7 @@ import List from '@material-ui/core/List'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Container from '@material-ui/core/Container'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import IconButton from '@material-ui/core/IconButton'
@@ -148,10 +148,7 @@ const Copyright = () => {
   return (
     <Typography className={classes.footer} variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" to="/">
-        管理画面
-      </Link>{' '}
-      {new Date().getFullYear()}
+      <Link href="/">管理画面</Link> {new Date().getFullYear()}
       {'.Vitalize'}
     </Typography>
   )
@@ -212,7 +209,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
           </div>
           <Divider />
           <List>
-            <Link to="/" className={classes.link}>
+            <Link href="/" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
                   <HomeIcon />
@@ -220,7 +217,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemText primary="値入力" />
               </ListItem>
             </Link>
-            <Link to="/ProductPage" className={classes.link}>
+            <Link href="/ProductPage" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
@@ -228,7 +225,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemText primary="商品" />
               </ListItem>
             </Link>
-            <Link to="/inventory" className={classes.link}>
+            <Link href="/inventory" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
@@ -236,7 +233,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemText primary="在庫" />
               </ListItem>
             </Link>
-            <Link to="/mobx" className={classes.link}>
+            <Link href="/mobx" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
@@ -244,7 +241,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemText primary="mobx練習" />
               </ListItem>
             </Link>
-            <Link to="/useEffect" className={classes.link}>
+            <Link href="/useEffect" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
