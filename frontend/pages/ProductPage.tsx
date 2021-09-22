@@ -73,86 +73,84 @@ const ProductPage: React.FC = () => {
   ]
 
   return (
-    <GenericTemplate title="商品ページ">
-      <Container maxWidth="lg">
-        <Grid container spacing={10} justify="center">
-          <Grid item xs={12} md={6} sm={6}>
-            <Paper elevation={3} className={classes.paper}>
-              <Grid container direction="row" justifyContent="center" alignItems="center">
-                <Grid item xs={12} className={classes.body}>
-                  入力欄
-                </Grid>
-                <Grid item xs={4} className={classes.body}>
-                  <AddShoppingCartOutlinedIcon className={classes.icon} />
-                  商品名
-                </Grid>
-                <Grid item xs={8} className={classes.body}>
-                  <TextField></TextField>
-                </Grid>
-                <Grid item xs={4} className={classes.body}>
-                  <ExposureOutlinedIcon className={classes.icon} />
-                  個数
-                </Grid>
-                <Grid item xs={8} className={classes.body}>
-                  <TextField></TextField>
-                </Grid>
-                <Grid item xs={4} className={classes.body}>
-                  <MonetizationOnOutlinedIcon className={classes.icon} />
-                  金額
-                </Grid>
-                <Grid item xs={8} className={classes.body}>
-                  <TextField></TextField>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button component="label">
-                    <input
-                      type="file"
-                      className={classes.input}
-                      id="contained-button-file"
-                      multiple
-                    />
-                    <label htmlFor="contained-button-file">
-                      <Button variant="contained" color="primary" component="span">
-                        <AddAPhotoOutlinedIcon style={{ padding: 3 }} />
-                        Upload
-                      </Button>
-                    </label>
-                  </Button>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button variant="outlined" color="primary" component="label">
-                    入力確認
-                  </Button>
-                </Grid>
+    <Container maxWidth="lg">
+      <Grid container spacing={10} justify="center">
+        <Grid item xs={12} md={6} sm={6}>
+          <Paper elevation={3} className={classes.paper}>
+            <Grid container direction="row" justifyContent="center" alignItems="center">
+              <Grid item xs={12} className={classes.body}>
+                入力欄
               </Grid>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={6} sm={6}>
-            <Paper elevation={3} className={classes.paper}>
-              <Grid container direction="row" justifyContent="center" alignItems="center">
-                <Grid item xs={12} className={classes.body}>
-                  入力確認
-                </Grid>
-                <div style={{ height: 400, width: '100%' }}>
-                  <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    pageSize={5}
-                    rowsPerPageOptions={[5]}
-                    checkboxSelection
-                    disableSelectionOnClick
+              <Grid item xs={4} className={classes.body}>
+                <AddShoppingCartOutlinedIcon className={classes.icon} />
+                商品名
+              </Grid>
+              <Grid item xs={8} className={classes.body}>
+                <TextField></TextField>
+              </Grid>
+              <Grid item xs={4} className={classes.body}>
+                <ExposureOutlinedIcon className={classes.icon} />
+                個数
+              </Grid>
+              <Grid item xs={8} className={classes.body}>
+                <TextField></TextField>
+              </Grid>
+              <Grid item xs={4} className={classes.body}>
+                <MonetizationOnOutlinedIcon className={classes.icon} />
+                金額
+              </Grid>
+              <Grid item xs={8} className={classes.body}>
+                <TextField></TextField>
+              </Grid>
+              <Grid item xs={6}>
+                <Button component="label">
+                  <input
+                    type="file"
+                    className={classes.input}
+                    id="contained-button-file"
+                    multiple
                   />
-                  <Button variant="outlined" color="primary" component="label">
-                    確定する
-                  </Button>
-                </div>
-                <Grid item xs={6}></Grid>
+                  <label htmlFor="contained-button-file">
+                    <Button variant="contained" color="primary" component="span">
+                      <AddAPhotoOutlinedIcon style={{ padding: 3 }} />
+                      Upload
+                    </Button>
+                  </label>
+                </Button>
               </Grid>
-            </Paper>
-          </Grid>
+              <Grid item xs={6}>
+                <Button variant="outlined" color="primary" component="label">
+                  入力確認
+                </Button>
+              </Grid>
+            </Grid>
+          </Paper>
         </Grid>
-      </Container>
-    </GenericTemplate>
+        <Grid item xs={12} md={6} sm={6}>
+          <Paper elevation={3} className={classes.paper}>
+            <Grid container direction="row" justifyContent="center" alignItems="center">
+              <Grid item xs={12} className={classes.body}>
+                入力確認
+              </Grid>
+              <div style={{ height: 400, width: '100%' }}>
+                <DataGrid
+                  rows={rows}
+                  columns={columns}
+                  pageSize={5}
+                  rowsPerPageOptions={[5]}
+                  checkboxSelection
+                  disableSelectionOnClick
+                />
+                <Button variant="outlined" color="primary" component="label">
+                  確定する
+                </Button>
+              </div>
+              <Grid item xs={6}></Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
   )
 }
 
