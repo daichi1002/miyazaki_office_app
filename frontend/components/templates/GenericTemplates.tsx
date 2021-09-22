@@ -209,7 +209,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
           </div>
           <Divider />
           <List>
-            <Link href="/" className={classes.link}>
+            <Link href="/" className={classes.link} passHref>
               <ListItem button>
                 <ListItemIcon>
                   <HomeIcon />
@@ -217,7 +217,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemText primary="値入力" />
               </ListItem>
             </Link>
-            <Link href="/ProductPage" className={classes.link}>
+            <Link href="/ProductPage" className={classes.link} passHref>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
@@ -225,7 +225,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemText primary="商品" />
               </ListItem>
             </Link>
-            <Link href="/inventory" className={classes.link}>
+            <Link href="/inventory" className={classes.link} passHref>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
@@ -233,7 +233,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemText primary="在庫" />
               </ListItem>
             </Link>
-            <Link href="/mobx" className={classes.link}>
+            <Link href="/mobx" className={classes.link} passHref>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
@@ -241,12 +241,20 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
                 <ListItemText primary="mobx練習" />
               </ListItem>
             </Link>
-            <Link href="/useEffect" className={classes.link}>
+            <Link href="/useEffect" className={classes.link} passHref>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
                 </ListItemIcon>
                 <ListItemText primary="hooks練習" />
+              </ListItem>
+            </Link>
+            <Link href="/calculation" className={classes.link} passHref>
+              <ListItem button>
+                <ListItemIcon>
+                  <ShoppingCartIcon />
+                </ListItemIcon>
+                <ListItemText primary="購入履歴" />
               </ListItem>
             </Link>
           </List>
