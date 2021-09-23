@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import GenericTemplate from '../components/templates/GenericTemplates'
 import { Box } from '@material-ui/core'
 import clsx from 'clsx'
@@ -24,7 +24,7 @@ const Calculation = () => {
       height: '20vh',
     },
     resultField: {
-      height: '50vh',
+      height: '60vh',
     },
     fieldposition: {
       justifyContent: 'end',
@@ -33,8 +33,10 @@ const Calculation = () => {
   const classes = useStyles()
   const searchFieldPaper = clsx(classes.paper, classes.fieldposition)
   const resultFieldPaper = clsx(classes.paper, classes.resultField)
+
   return (
     <Container maxWidth="lg">
+      <h1>出資確認</h1>
       <Grid container spacing={2}>
         <Grid item xs={12} md={12} lg={12}>
           <Paper className={searchFieldPaper}>
