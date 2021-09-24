@@ -184,13 +184,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.title}
-            >
+            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
               管理画面
             </Typography>
           </Toolbar>
@@ -262,13 +256,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
-            <Typography
-              component="h2"
-              variant="h5"
-              color="inherit"
-              noWrap
-              className={classes.pageTitle}
-            >
+            <Typography component="h2" variant="h5" color="inherit" noWrap className={classes.pageTitle}>
               {title}
             </Typography>
             {children}
