@@ -1,30 +1,29 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import Calendar from '../molecules/DatePicker'
 import { observer } from 'mobx-react'
 import { Grid } from '@material-ui/core'
-import { useForm, Controller } from 'react-hook-form'
-import { Button, MenuItem } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core'
 import PullDown from '../molecules/PullDown'
+import { TotalPrice } from '../molecules/TotalPrice'
 
 export const Form = observer(() => {
-  const { handleSubmit } = useForm()
-  const onSubmit = () => {}
-  const useStyles = makeStyles((theme) => ({
-    flexPosition: {
-      justifyContent: 'flex-end',
-    },
-  }))
-  const classes = useStyles()
+  const [date, setDate] = useState<any>([null, null])
+  const [category, setCategory] = useState('')
+
+  const onChange = () => {}
+  useEffect(() => {
+    console.log(category, date)
+  }, [category, date])
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Grid container direction="row" justifyContent="flex-end" alignItems="center">
-        <Calendar />
-        <PullDown />
-        <Button variant="contained" color="primary" type="submit">
-          次へ
-        </Button>
+    <Grid container direction="row" alignItems="center">
+      <Grid item xs={8} md={8} lg={8}>
+        <TotalPrice price={0} />
       </Grid>
-    </form>
+      <Grid item xs={4} md={4} lg={4}>
+        <Calendar title="日付" onChange={setDate} value={date} />
+
+        <PullDown title="項目選択" onChange={setCategory} value={category} />
+      </Grid>
+    </Grid>
   )
 })
