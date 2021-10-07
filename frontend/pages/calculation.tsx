@@ -8,9 +8,15 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import { Form } from '../components/organisms/Form'
-import TotalDate from '../components/molecules/TotalDate'
+import { TableField } from '../components/molecules/Table'
+import { SELECT_ITEMMASTER } from '../graphql/query'
+import { useQuery, useLazyQuery } from '@apollo/client'
 
 const Calculation = () => {
+  const [value, setValue] = useState('')
+  const { loading, error, data } = useQuery(SELECT_ITEMMASTER, { variables: { name: value } })
+
+  //関数のchangeStateを定義。引数のisStateは子コンポーネントで実行した際に取ってくる。
   const useStyles = makeStyles((theme) => ({
     container: {
       paddingTop: theme.spacing(2),
@@ -35,27 +41,23 @@ const Calculation = () => {
   const classes = useStyles()
   const searchFieldPaper = clsx(classes.paper, classes.fieldposition)
   const resultFieldPaper = clsx(classes.paper, classes.resultField)
-
   return (
-    <Container maxWidth="lg">
-      <h1>出資確認</h1>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={12} lg={12}>
-          <Paper className={searchFieldPaper}>
-            <Form />
-          </Paper>
+    <ApolloProvider client={client}>
+      <Container maxWidth="lg">
+        <h1>出資確認</h1>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={12} lg={12}>
+            <Paper className={searchFieldPaper}>
+              <Form loading={loading} error={error} data={data} setValue={setValue} />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <TableField loading={loading} error={error} data={data} />
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={12} lg={12}>
-          <Paper className={resultFieldPaper}>
-            <ApolloProvider client={client}>
-              <h1>Hello world</h1>
-              <TotalDate />
-            </ApolloProvider>
-          </Paper>
-        </Grid>
-      </Grid>
-      <Box pt={4} />
-    </Container>
+        <Box pt={4} />
+      </Container>
+    </ApolloProvider>
   )
 }
 
