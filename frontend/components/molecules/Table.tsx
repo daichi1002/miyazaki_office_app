@@ -11,12 +11,11 @@ import {
   Paper,
 } from '@material-ui/core'
 
-import { Fragment } from 'react'
-
 type ItemMasterProps = {
   id: number
   name: string
   requiredStock: number
+  inventoryDetailPrice: number
   inventoryDetailObjectCount: number
   updatedAt: Date
 }
@@ -28,7 +27,6 @@ export const TableField = (props: any) => {
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage)
   }
-  console.log(data)
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(+event.target.value)
     setPage(0)
@@ -45,6 +43,7 @@ export const TableField = (props: any) => {
             <TableCell>名前</TableCell>
             <TableCell>必要数</TableCell>
             <TableCell>在庫数</TableCell>
+            <TableCell>購入金額</TableCell>
             <TableCell>最終更新日</TableCell>
           </TableRow>
         </TableHead>
@@ -61,6 +60,7 @@ export const TableField = (props: any) => {
                 <TableCell>{item_master.name}</TableCell>
                 <TableCell>{item_master.requiredStock}</TableCell>
                 <TableCell>{item_master.inventoryDetailObjectCount}</TableCell>
+                <TableCell>{item_master.inventoryDetailPrice}</TableCell>
                 <TableCell>{item_master.updatedAt}</TableCell>
               </TableRow>
             ))}

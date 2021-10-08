@@ -9,6 +9,11 @@ export const GET_HISTORY = gql`
     }
   }
 `
+export const GET_ALLPRICE = gql`
+  {
+    allPrice
+  }
+`
 
 export const GET_ITEMMASTER = gql`
   query {
@@ -31,6 +36,7 @@ export const SELECT_ITEMMASTER = gql`
     selectItemMasters(name: $name) {
       id
       name
+      itemPrice
       requiredStock
       inventoryDetails {
         id
@@ -38,6 +44,7 @@ export const SELECT_ITEMMASTER = gql`
         updatedAt
       }
       inventoryDetailObjectCount
+      inventoryDetailPrice
     }
   }
 `

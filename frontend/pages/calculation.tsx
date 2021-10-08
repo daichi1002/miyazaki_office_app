@@ -10,9 +10,9 @@ import Paper from '@material-ui/core/Paper'
 import { Form } from '../components/organisms/Form'
 import { TableField } from '../components/molecules/Table'
 import { SELECT_ITEMMASTER } from '../graphql/query'
-import { useQuery, useLazyQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
-const Calculation = () => {
+export const Calculation = () => {
   const [value, setValue] = useState('')
   const { loading, error, data } = useQuery(SELECT_ITEMMASTER, { variables: { name: value } })
 
@@ -34,13 +34,11 @@ const Calculation = () => {
     resultField: {
       height: '60vh',
     },
-    fieldposition: {
-      justifyContent: 'end',
-    },
   }))
+
   const classes = useStyles()
-  const searchFieldPaper = clsx(classes.paper, classes.fieldposition)
-  const resultFieldPaper = clsx(classes.paper, classes.resultField)
+  const searchFieldPaper = clsx(classes.paper)
+
   return (
     <ApolloProvider client={client}>
       <Container maxWidth="lg">
@@ -48,7 +46,7 @@ const Calculation = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={12}>
             <Paper className={searchFieldPaper}>
-              <Form loading={loading} error={error} data={data} setValue={setValue} />
+              <Form setValue={setValue} />
             </Paper>
           </Grid>
           <Grid item xs={12} md={12} lg={12}>

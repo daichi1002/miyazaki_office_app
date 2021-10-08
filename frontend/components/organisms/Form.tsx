@@ -7,7 +7,7 @@ import { TotalPrice } from '../molecules/TotalPrice'
 import { GET_ITEMMASTER } from '../../graphql/query'
 import { useQuery } from '@apollo/client'
 type Props = {
-  setValue: (value: String) => void
+  setValue: (value: string) => void
 }
 
 export const Form = observer((props: Props) => {
@@ -22,7 +22,7 @@ export const Form = observer((props: Props) => {
   return (
     <Grid container direction="row" alignItems="center">
       <Grid item xs={8} md={8} lg={8}>
-        <TotalPrice price={0} />
+        <TotalPrice />
       </Grid>
       <Grid item xs={4} md={4} lg={4}>
         <Calendar title="日付" onChange={setDate} value={date} />

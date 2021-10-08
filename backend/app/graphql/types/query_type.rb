@@ -34,6 +34,15 @@ module Types
       end
     end
 
+      field :all_price, Integer, null: false , description: "出金額の合計"
+      def all_price
+        all_price = 0
+        ItemMaster.all.each do |item_master|
+          all_price +=  item_master.inventory_details.all.sum(:stock_quantity) * item_master.item_price
+        end
+        all_price
+      end
+
 
     field :inventory_details, [Types::InventoryDetailType], null: false
     def inventory_details
