@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useCallback } from 'react'
+import { Button } from '@material-ui/core'
 import Calendar from '../molecules/DatePicker'
 import { observer } from 'mobx-react'
 import { Grid } from '@material-ui/core'
@@ -6,6 +7,7 @@ import PullDown from '../molecules/PullDown'
 import { TotalPrice } from '../molecules/TotalPrice'
 import { GET_ITEMMASTER } from '../../graphql/query'
 import { useQuery } from '@apollo/client'
+
 type Props = {
   setValue: (value: string) => void
 }
@@ -13,7 +15,9 @@ type Props = {
 export const Form = observer((props: Props) => {
   const { loading, error, data } = useQuery(GET_ITEMMASTER)
   const [date, setDate] = useState<any>([null, null])
-  const [category, setCategory] = useState('')
+  const hundleReset = useCallback(() => {
+    setValue('')
+  }, [])
 
   const { setValue } = props
   if (loading) return <p>...loading</p>
@@ -26,15 +30,17 @@ export const Form = observer((props: Props) => {
       </Grid>
       <Grid item xs={4} md={4} lg={4}>
         <Calendar title="日付" onChange={setDate} value={date} />
+      </Grid>
 
-        <PullDown
-          id={data.id}
-          title="項目選択"
-          onChange={setCategory}
-          value={category}
-          select={data.itemMasters}
-          setValue={setValue}
-        />
+      <Grid container direction="row" spacing={2} justifyContent="flex-end" alignItems="flex-end">
+        <Grid item xs={4} md={4} lg={4}>
+          <PullDown id={data.id} title="項目選択" select={data.itemMasters} setValue={setValue} />
+        </Grid>
+        <Grid item>
+          <Button variant="outlined" onClick={hundleReset}>
+            リセット
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   )

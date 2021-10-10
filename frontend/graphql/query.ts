@@ -10,8 +10,8 @@ export const GET_HISTORY = gql`
   }
 `
 export const GET_ALLPRICE = gql`
-  {
-    allPrice
+  query {
+    allPrice: allPrice
   }
 `
 
@@ -26,7 +26,6 @@ export const GET_ITEMMASTER = gql`
         stockQuantity
         updatedAt
       }
-      inventoryDetailObjectCount
     }
   }
 `

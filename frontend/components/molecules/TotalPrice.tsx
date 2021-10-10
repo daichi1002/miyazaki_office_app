@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, memo } from 'react'
 import { makeStyles } from '@material-ui/core'
 import { GET_ALLPRICE } from '../../graphql/query'
 import { useQuery } from '@apollo/client'
@@ -26,3 +26,5 @@ export const TotalPrice = () => {
     </Fragment>
   )
 }
+
+export default memo(TotalPrice)
