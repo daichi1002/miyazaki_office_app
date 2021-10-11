@@ -42,6 +42,9 @@ export const SELECT_ITEMMASTER = gql`
         stockQuantity
         updatedAt
       }
+      inventory {
+        stock
+      }
       inventoryDetailObjectCount
       inventoryDetailPrice
     }

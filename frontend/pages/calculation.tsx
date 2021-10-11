@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import { Form } from '../components/organisms/Form'
-import { TableField } from '../components/molecules/Table'
+import { TableField } from '../components/molecules/Table/Table'
 import { SELECT_ITEMMASTER } from '../graphql/query'
 import { useQuery } from '@apollo/client'
 

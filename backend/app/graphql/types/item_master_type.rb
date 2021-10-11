@@ -11,6 +11,7 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: true
 
 
+    field :inventory, Types::InventoryType, null: false
     field :inventory_details, [Types::InventoryDetailType], null: false
     field :inventory_detail_object_count, Integer, null: false, description: '在庫の取得'
     field :inventory_detail_last_updated_at, String, null: false, description: '最終更新日の取得'

@@ -6,4 +6,6 @@ create_table "item_masters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COL
   t.integer "item_price"
   t.datetime "created_at"
   t.datetime "updated_at"
+
+  add_index :item_masters, :name , unique: true
 end

@@ -7,6 +7,7 @@ import PullDown from '../molecules/PullDown'
 import { TotalPrice } from '../molecules/TotalPrice'
 import { GET_ITEMMASTER } from '../../graphql/query'
 import { useQuery } from '@apollo/client'
+import { ProgressBar } from '../atom/ProgressBar'
 
 type Props = {
   setValue: (value: string) => void
@@ -20,7 +21,7 @@ export const Form = observer((props: Props) => {
   }, [])
 
   const { setValue } = props
-  if (loading) return <p>...loading</p>
+  if (loading) return <ProgressBar />
   if (error) return <p>{error.message}</p>
 
   return (
