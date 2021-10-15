@@ -1,21 +1,52 @@
 import { gql } from '@apollo/client'
 
 // 全件取得
-export const GET_TODOS = gql`
-  query getTodos {
-    todos {
+export const GET_HISTORY = gql`
+  {
+    histories {
       id
-      type
+      title
+    }
+  }
+`
+export const GET_ALLPRICE = gql`
+  query {
+    allPrice: allPrice
+  }
+`
+
+export const GET_ITEMMASTER = gql`
+  query {
+    itemMasters {
+      id
+      name
+      requiredStock
+      inventoryDetails {
+        id
+        stockQuantity
+        updatedAt
+      }
     }
   }
 `
 
-// 指定したIDのTODOを1件取得
-export const GET_TODO = gql`
-  query getTodo($id: String!) {
-    todo(id: $id) {
+export const SELECT_ITEMMASTER = gql`
+  query ($name: String!) {
+    selectItemMasters(name: $name) {
       id
-      type
+      name
+      itemPrice
+      requiredStock
+      inventoryDetails {
+        id
+        stockQuantity
+        updatedAt
+      }
+      inventory {
+        stock
+      }
+      inventoryDetailObjectCount
+      inventoryDetailPrice
     }
   }
 `
