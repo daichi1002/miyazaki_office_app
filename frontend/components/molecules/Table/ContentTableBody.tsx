@@ -1,5 +1,8 @@
 import React from 'react'
+import Button from '@material-ui/core/Button'
 import { TableCell, TableRow, TableBody } from '@material-ui/core'
+import { useMutation } from '@apollo/client'
+import { UPDATE_STOCK } from '../../../graphql/mutation'
 
 type ItemMasterProps = {
   id: number
@@ -7,15 +10,19 @@ type ItemMasterProps = {
   requiredStock: number
   inventoryDetailPrice: number
   inventoryDetailObjectCount: number
+  itemMasterUpdatedAt: string
   updatedAt: Date
   inventory: {
+    id: number
     stock: number
   }
 }
 
 export const ContentTableBody = (props: any) => {
   const { data, page, rowsPerPage } = props
+  const [decrement, { error }] = useMutation(UPDATE_STOCK)
 
+  if (error) return <p>{error.message}</p>
   return (
     <TableBody>
       {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item_master: ItemMasterProps) => (
@@ -28,8 +35,17 @@ export const ContentTableBody = (props: any) => {
           <TableCell>{item_master.name}</TableCell>
           <TableCell>{item_master.requiredStock}</TableCell>
           <TableCell>{item_master.inventory.stock}</TableCell>
+          <TableCell>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={() => decrement({ variables: { input: { id: item_master.inventory.id } } })}
+            >
+              消費
+            </Button>
+          </TableCell>
           <TableCell>{item_master.inventoryDetailPrice}</TableCell>
-          <TableCell>{item_master.updatedAt}</TableCell>
+          <TableCell>{item_master.itemMasterUpdatedAt}</TableCell>
         </TableRow>
       ))}
     </TableBody>

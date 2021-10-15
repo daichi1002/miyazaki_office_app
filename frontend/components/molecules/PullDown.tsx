@@ -7,8 +7,6 @@ import { useQuery } from '@apollo/client'
 type Props = {
   id: number
   title: string
-  onChange: (value: string) => void
-  value: string
   setValue: (value: string) => void
   select: {
     id: number
@@ -16,7 +14,6 @@ type Props = {
   }[]
 }
 
-type SelectDate = {}
 export const PullDown = (props: Props) => {
   const menu = props?.select
   const { setValue } = props

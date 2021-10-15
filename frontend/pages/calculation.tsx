@@ -14,7 +14,10 @@ import { useQuery } from '@apollo/client'
 
 export const Calculation = () => {
   const [value, setValue] = useState('')
-  const { loading, error, data } = useQuery(SELECT_ITEMMASTER, { variables: { name: value } })
+  const [date, setDate] = useState<any>([null, null])
+  const { loading, error, data } = useQuery(SELECT_ITEMMASTER, {
+    variables: { name: value, date: date },
+  })
 
   //関数のchangeStateを定義。引数のisStateは子コンポーネントで実行した際に取ってくる。
   const useStyles = makeStyles((theme) => ({
@@ -46,7 +49,7 @@ export const Calculation = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={12}>
             <Paper className={searchFieldPaper}>
-              <Form setValue={setValue} />
+              <Form setValue={setValue} setDate={setDate} date={date} />
             </Paper>
           </Grid>
           <Grid item xs={12} md={12} lg={12}>

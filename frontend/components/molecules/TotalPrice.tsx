@@ -10,8 +10,12 @@ const useStyles = makeStyles({
   },
 })
 
-export const TotalPrice = () => {
-  const { loading, error, data } = useQuery(GET_ALLPRICE)
+type Props = {
+  date: any
+}
+
+export const TotalPrice = (props: Props) => {
+  const { loading, error, data } = useQuery(GET_ALLPRICE, { variables: { date: props.date } })
   const classes = useStyles()
   if (loading) return <p>...loading</p>
   if (error) return <p>{error.message}</p>
