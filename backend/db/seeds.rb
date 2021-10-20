@@ -27,7 +27,7 @@ end
 
 3.times do 
   item_masters = ItemMaster.create!(
-    name: Faker::JapaneseMedia::StudioGhibli.movie,
+    name: Faker::JapaneseMedia::OnePiece.akuma_no_mi,
     required_stock: rand(1..100),
     item_price: rand(100..10000)
   )

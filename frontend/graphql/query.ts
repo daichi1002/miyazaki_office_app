@@ -10,8 +10,8 @@ export const GET_HISTORY = gql`
   }
 `
 export const GET_ALLPRICE = gql`
-  query {
-    allPrice: allPrice
+  query ($date: [String!]) {
+    allPrice: allPrice(date: $date)
   }
 `
 
@@ -31,18 +31,20 @@ export const GET_ITEMMASTER = gql`
 `
 
 export const SELECT_ITEMMASTER = gql`
-  query ($name: String!) {
-    selectItemMasters(name: $name) {
+  query ($name: String!, $date: [String!]) {
+    selectItemMasters(name: $name, date: $date) {
       id
       name
       itemPrice
       requiredStock
+      updatedAt
+      itemMasterUpdatedAt
       inventoryDetails {
         id
         stockQuantity
-        updatedAt
       }
       inventory {
+        id
         stock
       }
       inventoryDetailObjectCount
