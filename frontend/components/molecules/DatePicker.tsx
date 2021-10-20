@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/styles'
 type Props = {
   title: string
   onChange: (value: string[] | undefined) => void
-  value: null[]
 }
 
 const useStyles = makeStyles({

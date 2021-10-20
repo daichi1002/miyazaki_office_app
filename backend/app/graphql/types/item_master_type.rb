@@ -14,7 +14,7 @@ module Types
     field :inventory, Types::InventoryType, null: false
     field :inventory_details, [Types::InventoryDetailType], null: false
     field :inventory_detail_object_count, Integer, null: false, description: '在庫の取得'
-    field :inventory_detail_last_updated_at, String, null: false, description: '最終更新日の取得'
+    field :item_master_updated_at, String, null: false, description: '最終更新日の取得'
     field :inventory_detail_price, Integer, null: false, description: '金額の取得'
     field :all_price, Integer, null: false, description: '金額の取得'
 
@@ -22,12 +22,8 @@ module Types
       object.inventory_details.all.sum(:stock_quantity)
     end
 
-    def inventory_detail_last_updated_at
-      b= []
-      object.inventory_details.each do |a|
-        b << a.updated_at.in_time_zone
-      end
-      b
+    def item_master_updated_at
+      object.updated_at.strftime("%Y年%m月%d日")
     end
 
     def inventory_detail_price
