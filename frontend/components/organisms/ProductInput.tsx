@@ -4,13 +4,15 @@ import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core'
 import UploadPicture from '../molecules/Product/UploadPicture'
 import InputForm from '../molecules/Product/InputForm'
-import { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import InputDate from '../molecules/Product/InputDate'
 
 type Product = {
   id: number
   name: string
   num: number
   price: number
+  date: any
 }
 
 type Props = {
@@ -25,13 +27,8 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
       overflow: 'auto',
       flexDirection: 'column',
       borderRadius: 20,
-      height: '65vh',
+      height: '70vh',
       width: '35vw',
-    },
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-      },
     },
     body: {
       padding: 10,
@@ -46,13 +43,10 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
   const classes = useStyles()
 
   const [name, setName] = useState('')
-  const [num, setNum] = useState(0)
-  const [price, setPrice] = useState(0)
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    console.log(name, num, price)
-  })
+  const [num, setNum] = useState<number>()
+  const [price, setPrice] = useState<number>()
+  const [count, setCount] = useState(products.length + 1)
+  const [date, setDate] = useState<any>(null)
 
   const submit = () => {
     setCount(count + 1)
@@ -61,9 +55,13 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
       name: name,
       num: num,
       price: price,
+      date: date,
     }
 
-    setProducts([newProduct, ...products])
+    setProducts([...products, newProduct])
+    setName('')
+    setNum(0)
+    setPrice(0)
   }
 
   return (
@@ -80,6 +78,9 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
         </Grid>
         <Grid item xs={12} className={classes.body}>
           <InputForm title="金額" onChange={setPrice} value={price} />
+        </Grid>
+        <Grid item xs={12} className={classes.body}>
+          <InputDate title="購入日" onChange={setDate} value={date} />
         </Grid>
         <Grid item xs={6} className={classes.body}>
           <UploadPicture />

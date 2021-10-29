@@ -4,7 +4,7 @@ import { TextField } from '@material-ui/core'
 type Props = {
   title: string
   value: string | number
-  onChange: (value: string | number) => void
+  onChange: (value: any) => void
 }
 
 export const InputForm = (props: Props) => {

@@ -2,9 +2,9 @@ module Types
   class HistoryType < Types::BaseObject
     #テーブルの内容
     field :id, ID, null: false
-    field :user_id, ID, null: false
+    field :user_id, Integer, null: false
     field :title, String, null: false
-    field :purchase_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :purchase_at, String, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     #アソシエーションの情報
