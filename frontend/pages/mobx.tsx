@@ -11,7 +11,6 @@ const App = observer(() => {
 
   useEffect(() => {
     document.title = `${count}回クリックされました`
-    console.log(`再レンダーされました`)
   }, [])
 
   return (
