@@ -2,14 +2,15 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core'
 import { useMutation } from '@apollo/client'
-import { CREATE_HISTORY, CREATE_HISTORY_DETAIL } from '../../graphql/mutation'
+import { CREATE_HISTORY, CREATE_HISTORY_DETAIL } from '../../../graphql/mutation'
+import React, { useState } from 'react'
 
 type Product = {
   id: number
   name: string
   num: number
   price: number
-  date: any
+  date: String
 }
 
 const ProductConfirm = (props: any) => {
@@ -24,13 +25,15 @@ const ProductConfirm = (props: any) => {
   // const sumPrice = () => {
   //   props.products.forEach((product: Product) => {
   //     const price = product.price
-  //     setSubTotal(subtotal + parseInt(price))
+  //     setSubTotal(subtotal + price)
   //   })
   // }
-  let subtotal = 0
+
+  // const [subtotal, setSubTotal] = useState<number>(0)
+  let subtotal: number = 0
   props.products.forEach((product: Product) => {
-    const price = product.price
-    subtotal += parseInt(price)
+    const price: number = product.price
+    subtotal + price
   })
 
   const [createHistory, { error }] = useMutation(CREATE_HISTORY, {

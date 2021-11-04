@@ -2,17 +2,17 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core'
-import UploadPicture from '../molecules/Product/UploadPicture'
-import InputForm from '../molecules/Product/InputForm'
+import UploadPicture from '../atom/UploadPicture'
+import InputForm from '../atom/InputForm'
 import React, { useState } from 'react'
-import InputDate from '../molecules/Product/InputDate'
+import InputDate from '../atom/InputDate'
 
 type Product = {
   id: number
   name: string
   num: number
   price: number
-  date: any
+  date: String
 }
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
 }
 
 export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => {
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles(() => ({
     paper: {
       display: 'flex',
       overflow: 'auto',
@@ -43,10 +43,10 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
   const classes = useStyles()
 
   const [name, setName] = useState('')
-  const [num, setNum] = useState<number>()
-  const [price, setPrice] = useState<number>()
+  const [num, setNum] = useState<number>(0)
+  const [price, setPrice] = useState<number>(0)
   const [count, setCount] = useState(products.length + 1)
-  const [date, setDate] = useState<any>(null)
+  const [date, setDate] = useState<String>('')
 
   const submit = () => {
     setCount(count + 1)
@@ -83,7 +83,7 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
           <InputDate title="購入日" onChange={setDate} value={date} />
         </Grid>
         <Grid item xs={6} className={classes.body}>
-          <UploadPicture />
+          {/* <UploadPicture /> */}
         </Grid>
         <Grid item xs={6} className={classes.body}>
           <Button variant="outlined" color="primary" component="label" onClick={submit}>

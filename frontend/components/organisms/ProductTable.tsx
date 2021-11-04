@@ -2,9 +2,9 @@ import { makeStyles } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import { Table } from '@material-ui/core'
-import ProductListTitle from './ProductListTitle'
-import ProductList from './ProductList'
-import ProductConfirm from './ProductConfirm'
+import ProductListTitle from '../molecules/Product/ProductListTitle'
+import ProductList from '../molecules/Product/ProductList'
+import ProductConfirm from '../molecules/Product/ProductConfirm'
 
 type Product = {
   id: number

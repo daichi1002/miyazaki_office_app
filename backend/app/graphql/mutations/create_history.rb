@@ -1,10 +1,14 @@
 module Mutations
   class CreateHistory < BaseMutation
     graphql_name 'CreateHistory'
+    # field :history, [Types::HistoryType], null: true do
+    #   argument :user_id, ID, required: false
+    #   argument :title, String, required: false
+    #   argument :purchase_at, String, required: false
+    # end
     field :history, [Types::HistoryType], null: true
     field :result, Boolean, null: true
 
-    # argument :history, [String], required: false
     argument :user_id, ID, required: false
     argument :title, String, required: false
     argument :purchase_at, String, required: false
