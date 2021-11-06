@@ -4,13 +4,14 @@ import { makeStyles } from '@material-ui/core'
 import { useMutation } from '@apollo/client'
 import { CREATE_HISTORY, CREATE_HISTORY_DETAIL } from '../../../graphql/mutation'
 import React, { useState } from 'react'
+import axios from 'axios'
 
 type Product = {
   id: number
-  name: string
+  title: string
   num: number
   price: number
-  date: String
+  purchaseAt: String
 }
 
 const ProductConfirm = (props: any) => {
@@ -36,15 +37,28 @@ const ProductConfirm = (props: any) => {
     subtotal + price
   })
 
-  const [createHistory, { error }] = useMutation(CREATE_HISTORY, {
-    variables: { input: { userId: 1, purchaseAt: props.products.date, title: props.products.name } },
-  })
-  const [createHistoryDetail] = useMutation(CREATE_HISTORY_DETAIL, {
-    variables: {
-      input: { historyId: props.products.id, content: props.products.name, price: props.products.price },
-    },
-  })
-  if (error) return <p>{error.message}</p>
+  // graphqlの保存処理（できてない）
+  // const [createHistory, { error }] = useMutation(CREATE_HISTORY, {
+  //   variables: { input: { userId: 1, purchaseAt: props.products.date, title: props.products.name } },
+  // })
+  // const [createHistoryDetail] = useMutation(CREATE_HISTORY_DETAIL, {
+  //   variables: {
+  //     input: { historyId: props.products.id, content: props.products.name, price: props.products.price },
+  //   },
+  // })
+  // if (error) return <p>{error.message}</p>
+
+  // axios
+  const createHistory = (history: any) => {
+    axios.post('http://localhost:3000/histories/', { history }).then((res: any) => {
+      console.log(res)
+      console.log(res.config.data)
+      if (res.status === 204) {
+        props.setProducts([])
+        console.log(props.products)
+      }
+    })
+  }
 
   return (
     <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
@@ -57,7 +71,7 @@ const ProductConfirm = (props: any) => {
           color="primary"
           component="label"
           onClick={() => {
-            createHistory(), createHistoryDetail()
+            createHistory(props.products)
           }}
         >
           確定

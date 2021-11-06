@@ -6,10 +6,10 @@ import ProductTable from '../components/organisms/ProductTable'
 
 type Product = {
   id: number
-  name: string
+  title: string
   num: number
   price: number
-  date: any
+  purchaseAt: any
 }
 
 const ProductPage = () => {

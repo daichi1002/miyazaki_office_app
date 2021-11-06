@@ -9,9 +9,10 @@ module Mutations
     field :history, [Types::HistoryType], null: true
     field :result, Boolean, null: true
 
-    argument :user_id, ID, required: false
-    argument :title, String, required: false
-    argument :purchase_at, String, required: false
+    argument :history, [Types::Attributes::HistoryInput], required: true
+    # argument :user_id, ID, required: false
+    # argument :title, String, required: false
+    # argument :purchase_at, String, required: false
 
     def resolve(**args)
       args.each do |arg|

@@ -8,10 +8,10 @@ import ProductConfirm from '../molecules/Product/ProductConfirm'
 
 type Product = {
   id: number
-  name: string
+  title: string
   num: number
   price: number
-  date: any
+  purchaseAt: any
 }
 
 type Props = {

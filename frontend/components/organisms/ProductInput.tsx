@@ -9,10 +9,10 @@ import InputDate from '../atom/InputDate'
 
 type Product = {
   id: number
-  name: string
+  title: string
   num: number
   price: number
-  date: String
+  purchaseAt: String
 }
 
 type Props = {
@@ -52,10 +52,10 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
     setCount(count + 1)
     const newProduct: Product = {
       id: count,
-      name: name,
+      title: name,
       num: num,
       price: price,
-      date: date,
+      purchaseAt: date,
     }
 
     setProducts([...products, newProduct])

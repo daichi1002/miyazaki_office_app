@@ -3,10 +3,10 @@ import { TableCell, TableRow, TableBody } from '@material-ui/core'
 
 type Product = {
   id: number
-  name: string
+  title: string
   num: number
   price: number
-  date: any
+  purchaseAt: any
 }
 
 const ProductList = (props: any) => {
@@ -23,10 +23,10 @@ const ProductList = (props: any) => {
               削除
             </Button>
           </TableCell>
-          <TableCell>{product.name}</TableCell>
+          <TableCell>{product.title}</TableCell>
           <TableCell>{product.num}</TableCell>
           <TableCell>{product.price}</TableCell>
-          <TableCell>{product.date}</TableCell>
+          <TableCell>{product.purchaseAt}</TableCell>
         </TableRow>
       ))}
     </TableBody>
