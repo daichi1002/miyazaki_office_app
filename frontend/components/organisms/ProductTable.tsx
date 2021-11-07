@@ -9,8 +9,8 @@ import ProductConfirm from '../molecules/Product/ProductConfirm'
 type Product = {
   id: number
   title: string
-  num: number
-  price: number
+  num: number | undefined
+  price: number | undefined
   purchaseAt: any
 }
 
@@ -20,7 +20,7 @@ type Props = {
 }
 
 const ProductTable: React.FC<Props> = ({ products, setProducts }) => {
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles(() => ({
     paper: {
       display: 'flex',
       overflow: 'auto',

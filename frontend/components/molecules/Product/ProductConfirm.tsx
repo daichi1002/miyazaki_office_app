@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_HISTORY, CREATE_HISTORY_DETAIL } from '../../../graphql/mutation'
 import React, { useState } from 'react'
 import axios from 'axios'
+import { ProgressBar } from '../../atom/ProgressBar'
 
 type Product = {
   id: number
@@ -55,6 +56,7 @@ const ProductConfirm = (props: any) => {
       if (res.status === 204) {
         props.setProducts([])
         console.log(props.products)
+        return <ProgressBar />
       }
     })
   }

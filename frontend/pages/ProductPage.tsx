@@ -7,8 +7,8 @@ import ProductTable from '../components/organisms/ProductTable'
 type Product = {
   id: number
   title: string
-  num: number
-  price: number
+  num: number | undefined
+  price: number | undefined
   purchaseAt: any
 }
 

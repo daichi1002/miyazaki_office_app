@@ -6,12 +6,16 @@ import UploadPicture from '../atom/UploadPicture'
 import InputForm from '../atom/InputForm'
 import React, { useState } from 'react'
 import InputDate from '../atom/InputDate'
+import { GET_ITEMMASTER } from '../../graphql/query'
+import { useQuery } from '@apollo/client'
+import { ProgressBar } from '../atom/ProgressBar'
+import SelectBox from '../atom/SelectBox'
 
 type Product = {
   id: number
   title: string
-  num: number
-  price: number
+  num: number | undefined
+  price: number | undefined
   purchaseAt: String
 }
 
@@ -43,10 +47,10 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
   const classes = useStyles()
 
   const [name, setName] = useState('')
-  const [num, setNum] = useState<number>(0)
-  const [price, setPrice] = useState<number>(0)
+  const [num, setNum] = useState<number | undefined>(undefined)
+  const [price, setPrice] = useState<number | undefined>(undefined)
   const [count, setCount] = useState(products.length + 1)
-  const [date, setDate] = useState<String>('')
+  const [purchaseAt, setPurchaseAt] = useState<String>('')
 
   const submit = () => {
     setCount(count + 1)
@@ -55,14 +59,18 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
       title: name,
       num: num,
       price: price,
-      purchaseAt: date,
+      purchaseAt: purchaseAt,
     }
 
     setProducts([...products, newProduct])
     setName('')
-    setNum(0)
-    setPrice(0)
+    setNum(undefined)
+    setPrice(undefined)
   }
+
+  const { loading, error, data } = useQuery(GET_ITEMMASTER)
+  if (loading) return <ProgressBar />
+  if (error) return <p>{error.message}</p>
 
   return (
     <Paper elevation={3} className={classes.paper}>
@@ -71,7 +79,7 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
           <h2>入力欄</h2>
         </Grid>
         <Grid item xs={12} className={classes.body}>
-          <InputForm title="商品名" onChange={setName} value={name} />
+          <SelectBox title="商品名" select={data.itemMasters} onChange={setName} value={name} />
         </Grid>
         <Grid item xs={12} className={classes.body}>
           <InputForm title="個数" onChange={setNum} value={num} />
@@ -80,7 +88,7 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
           <InputForm title="金額" onChange={setPrice} value={price} />
         </Grid>
         <Grid item xs={12} className={classes.body}>
-          <InputDate title="購入日" onChange={setDate} value={date} />
+          <InputDate title="購入日" onChange={setPurchaseAt} value={purchaseAt} />
         </Grid>
         <Grid item xs={6} className={classes.body}>
           {/* <UploadPicture /> */}
