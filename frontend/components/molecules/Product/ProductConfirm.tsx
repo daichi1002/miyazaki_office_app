@@ -49,10 +49,9 @@ const ProductConfirm = (props: any) => {
   // if (error) return <p>{error.message}</p>
 
   // axios
-  const createHistory = (history: any) => {
+  const createHistory = (history: Product) => {
     axios.post('http://localhost:3000/histories/', { history }).then((res: any) => {
       console.log(res)
-      console.log(res.config.data)
       if (res.status === 204) {
         props.setProducts([])
         console.log(props.products)
