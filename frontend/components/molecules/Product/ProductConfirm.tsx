@@ -36,7 +36,7 @@ const ProductConfirm = (props: Props) => {
 
   // axios
   const createHistory = (history: Product[]) => {
-    axios.post('http://localhost:3000/histories/', { history }).then((res: any) => {
+    axios.post('http://localhost:3000/api/v1/histories/', { history }).then((res: any) => {
       console.log(res)
       if (res.status === 204) {
         props.setSubtotal(0)
