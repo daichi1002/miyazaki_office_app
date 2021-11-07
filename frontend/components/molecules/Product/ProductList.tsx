@@ -1,13 +1,6 @@
 import Button from '@material-ui/core/Button'
 import { TableCell, TableRow, TableBody } from '@material-ui/core'
-
-type Product = {
-  id: number
-  title: string
-  num: number
-  price: number
-  purchaseAt: any
-}
+import { Product } from '../../../types'
 
 const ProductList = (props: any) => {
   const handleDelete = (product: Product) => {

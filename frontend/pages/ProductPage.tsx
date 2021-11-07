@@ -3,14 +3,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import ProductInput from '../components/organisms/ProductInput'
 import ProductTable from '../components/organisms/ProductTable'
-
-type Product = {
-  id: number
-  title: string
-  num: number | undefined
-  price: number | undefined
-  purchaseAt: any
-}
+import { Product } from '../types'
 
 const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([])

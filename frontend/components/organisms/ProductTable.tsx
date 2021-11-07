@@ -5,14 +5,7 @@ import { Table } from '@material-ui/core'
 import ProductListTitle from '../molecules/Product/ProductListTitle'
 import ProductList from '../molecules/Product/ProductList'
 import ProductConfirm from '../molecules/Product/ProductConfirm'
-
-type Product = {
-  id: number
-  title: string
-  num: number | undefined
-  price: number | undefined
-  purchaseAt: any
-}
+import { Product } from '../../types'
 
 type Props = {
   products: Product[]

@@ -10,14 +10,7 @@ import { GET_ITEMMASTER } from '../../graphql/query'
 import { useQuery } from '@apollo/client'
 import { ProgressBar } from '../atom/ProgressBar'
 import SelectBox from '../atom/SelectBox'
-
-type Product = {
-  id: number
-  title: string
-  num: number | undefined
-  price: number | undefined
-  purchaseAt: String
-}
+import { Product } from '../../types'
 
 type Props = {
   products: Product[]
