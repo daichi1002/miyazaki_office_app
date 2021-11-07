@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import { Fragment, memo } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { TextField as MaterialForm } from '@material-ui/core'
 
@@ -27,4 +27,4 @@ export const TextField = () => {
   )
 }
 
-export default TextField
+export default memo(TextField)

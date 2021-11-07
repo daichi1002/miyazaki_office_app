@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Box } from '@material-ui/core'
 import clsx from 'clsx'
 import client from '../graphql/client'
@@ -18,7 +18,6 @@ export const Calculation = () => {
   const { loading, error, data } = useQuery(SELECT_ITEMMASTER, {
     variables: { name: value, date: date },
   })
-
   //関数のchangeStateを定義。引数のisStateは子コンポーネントで実行した際に取ってくる。
   const useStyles = makeStyles((theme) => ({
     container: {
@@ -61,5 +60,4 @@ export const Calculation = () => {
     </ApolloProvider>
   )
 }
-
 export default Calculation

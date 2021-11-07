@@ -1,4 +1,4 @@
-import { Fragment, useContext, useCallback, memo } from 'react'
+import { Fragment, useContext, useCallback } from 'react'
 import { useRouter } from 'next/dist/client/router'
 
 import AppBar from '@material-ui/core/AppBar'
@@ -61,7 +61,7 @@ export const Header = (props: Props) => {
   const handleClickLogOut = useCallback(() => {
     signOut
     nextRouter.push('/').then(() => setIsSignedIn(false))
-  }, [isSignedIn])
+  }, [])
 
   return (
     <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -88,4 +88,4 @@ export const Header = (props: Props) => {
   )
 }
 
-export default memo(Header)
+export default Header

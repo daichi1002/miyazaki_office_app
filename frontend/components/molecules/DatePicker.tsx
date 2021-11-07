@@ -1,6 +1,6 @@
 import 'react-datepicker/dist/react-datepicker.css'
 import dayjs from 'dayjs'
-import { Fragment, useState } from 'react'
+import { Fragment, useState, memo } from 'react'
 import DatePicker from 'react-datepicker'
 import { makeStyles } from '@material-ui/styles'
 
@@ -54,4 +54,4 @@ export const Calendar = (props: Props) => {
   )
 }
 
-export default Calendar
+export default memo(Calendar)

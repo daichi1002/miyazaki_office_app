@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import { useCallback, memo } from 'react'
 import Snackbar from '@material-ui/core/Snackbar'
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
@@ -37,4 +37,4 @@ const AlertMessage = ({ open, setOpen, severity, message }: AlertMessageProps) =
   )
 }
 
-export default AlertMessage
+export default memo(AlertMessage)

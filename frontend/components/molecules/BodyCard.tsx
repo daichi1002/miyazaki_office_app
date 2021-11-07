@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -62,4 +62,4 @@ function BodyCard(props: Props) {
   )
 }
 
-export default BodyCard
+export default memo(BodyCard)

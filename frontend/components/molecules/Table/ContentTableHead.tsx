@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { TableHead, TableCell, TableRow } from '@material-ui/core'
 
-export const ContentTableHead = () => {
+export const ContentTableHead = memo(() => {
   return (
     <TableHead>
       <TableRow style={{ backgroundColor: '#F2F2F2' }}>
@@ -14,4 +15,4 @@ export const ContentTableHead = () => {
       </TableRow>
     </TableHead>
   )
-}
+})
