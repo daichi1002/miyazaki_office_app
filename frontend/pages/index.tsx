@@ -2,12 +2,9 @@ import React from 'react'
 import axios from 'axios'
 import BodyCard from '../components/molecules/BodyCard'
 import Box from '@material-ui/core/Box'
-import clsx from 'clsx'
-import GenericTemplate from '../components/templates/GenericTemplates'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
-import Paper from '@material-ui/core/Paper'
 import { Props } from '../components/molecules/BodyCard'
 
 const HomePage: React.FC = () => {
@@ -48,16 +45,9 @@ const HomePage: React.FC = () => {
     },
   }))
   const classes = useStyles()
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   return (
     <Container maxWidth="lg" className={classes.container}>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6} lg={6}>
-          <Paper className={fixedHeightPaper}>テスト</Paper>
-        </Grid>
-        <Grid item xs={12} md={6} lg={6}>
-          <Paper className={fixedHeightPaper}>テスト</Paper>
-        </Grid>
         <Grid item xs={12}>
           {posts.slice(0, 3).map((contentObj) => getCardContent(contentObj))}
         </Grid>

@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import Button from '@material-ui/core/Button'
 import { TableCell, TableRow, TableBody } from '@material-ui/core'
 import { useMutation } from '@apollo/client'

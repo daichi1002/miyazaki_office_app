@@ -18,10 +18,13 @@ export const PullDown = (props: Props) => {
   const menu = props?.select
   const { setValue } = props
   const [selectValue, setSelectValue] = useState('')
-  const handleSelect = useCallback((select: string) => {
-    setSelectValue(select)
-    setValue(select)
-  }, [])
+  const handleSelect = useCallback(
+    (select: string) => {
+      setSelectValue(select)
+      setValue(select)
+    },
+    [setSelectValue, setValue]
+  )
   return (
     <TextField key={props.id} label={props.title} fullWidth margin="normal" select value={selectValue}>
       {menu.map((selectDate) => (

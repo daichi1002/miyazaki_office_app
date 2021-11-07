@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import { Fragment, memo } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { FormControlLabel, Checkbox } from '@material-ui/core'
 
@@ -24,4 +24,4 @@ export const CheckBox = () => {
   )
 }
 
-export default CheckBox
+export default memo(CheckBox)

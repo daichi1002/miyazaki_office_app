@@ -1,9 +1,9 @@
-import React, { Fragment, createContext, useEffect, useState } from 'react'
+import { Fragment, createContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import { ApolloProvider } from '@apollo/client'
 import { CssBaseline } from '@material-ui/core'
 import client from '../graphql/client'
-import GenericTemplate from '../components/templates/GenericTemplates'
+import Layout from '../components/Layout'
 import { User } from '../interfaces/index'
 import SignIn from '../components/molecules/SignIn'
 import SignUp from './signup'
@@ -55,7 +55,7 @@ export const MyApp = ({ Component, pageProps }: AppProps) => {
     <Fragment>
       <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
         <ApolloProvider client={client}>
-          <GenericTemplate title="">
+          <Layout title="">
             {!loading && !isSignedIn ? (
               router.route !== '/' ? (
                 <SignUp />
@@ -68,7 +68,7 @@ export const MyApp = ({ Component, pageProps }: AppProps) => {
                 <Component {...pageProps} />
               </Fragment>
             )}
-          </GenericTemplate>
+          </Layout>
         </ApolloProvider>
       </AuthContext.Provider>
     </Fragment>
