@@ -5,6 +5,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
     command: --default-authentication-plugin=mysql_native_password
+    cap_add:
+      - SYS_NICE
     volumes:
       - mysql-data:/var/lib/mysql
       #- /tmp/dockerdir:/etc/mysql/conf.d/

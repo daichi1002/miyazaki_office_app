@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useContext, Fragment, useMemo, useCallback } from 'react'
 import clsx from 'clsx'
 import { createTheme } from '@material-ui/core/styles'
 import * as colors from '@material-ui/core/colors'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles'
+import { Button } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import List from '@material-ui/core/List'
-
+import { AuthContext } from '../../pages/_app'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Container from '@material-ui/core/Container'
@@ -19,10 +20,12 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import IconButton from '@material-ui/core/IconButton'
 import HomeIcon from '@material-ui/icons/Home'
+import { signOut } from '../../lib/api/auth'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import { useRouter } from 'next/dist/client/router'
 
 const drawerWidth = 240
 
@@ -117,6 +120,13 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100vh',
       overflow: 'auto',
     },
+    signIn: {
+      flexGrow: 1,
+      height: '100vh',
+      overflow: 'auto',
+      display: 'grid',
+      placeContent: 'center',
+    },
     container: {
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
@@ -162,12 +172,20 @@ export interface GenericTemplateProps {
 const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
+  const nextRouter = useRouter()
   const handleDrawerOpen = () => {
     setOpen(true)
   }
+
+  const { isSignedIn, setIsSignedIn } = useContext(AuthContext)
   const handleDrawerClose = () => {
     setOpen(false)
   }
+
+  const handleClickLogOut = useCallback((): any => {
+    signOut
+    nextRouter.push('/').then(() => setIsSignedIn(false))
+  }, [isSignedIn])
 
   return (
     <ThemeProvider theme={theme}>
@@ -175,96 +193,112 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children, title }) =>
         <CssBaseline />
         <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
           <Toolbar className={classes.toolbar}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-              管理画面
-            </Typography>
+            {isSignedIn && (
+              <Fragment>
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                  管理画面
+                </Typography>
+                <Button onClick={handleClickLogOut}>ログアウト</Button>
+              </Fragment>
+            )}
           </Toolbar>
         </AppBar>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-          }}
-          open={open}
-        >
-          <div className={classes.toolbarIcon}>
-            <IconButton onClick={handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            <Link href="/" className={classes.link} passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <HomeIcon />
-                </ListItemIcon>
-                <ListItemText primary="値入力" />
-              </ListItem>
-            </Link>
-            <Link href="/ProductPage" className={classes.link} passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="商品" />
-              </ListItem>
-            </Link>
-            <Link href="/inventory" className={classes.link} passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="在庫" />
-              </ListItem>
-            </Link>
-            <Link href="/mobx" className={classes.link} passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="mobx練習" />
-              </ListItem>
-            </Link>
-            <Link href="/useEffect" className={classes.link} passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="hooks練習" />
-              </ListItem>
-            </Link>
-            <Link href="/calculation" className={classes.link} passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="購入履歴" />
-              </ListItem>
-            </Link>
-          </List>
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container}>
-            <Typography component="h2" variant="h5" color="inherit" noWrap className={classes.pageTitle}>
-              {title}
-            </Typography>
+        {isSignedIn && (
+          <Drawer
+            variant="permanent"
+            classes={{
+              paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+            }}
+            open={open}
+          >
+            <div className={classes.toolbarIcon}>
+              <IconButton onClick={handleDrawerClose}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </div>
+            <Divider />
+            <List>
+              <Link href="/" className={classes.link} passHref>
+                <ListItem button>
+                  <ListItemIcon>
+                    <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="値入力" />
+                </ListItem>
+              </Link>
+              <Link href="/ProductPage" className={classes.link} passHref>
+                <ListItem button>
+                  <ListItemIcon>
+                    <ShoppingCartIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="商品" />
+                </ListItem>
+              </Link>
+              <Link href="/inventory" className={classes.link} passHref>
+                <ListItem button>
+                  <ListItemIcon>
+                    <ShoppingCartIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="在庫" />
+                </ListItem>
+              </Link>
+              <Link href="/mobx" className={classes.link} passHref>
+                <ListItem button>
+                  <ListItemIcon>
+                    <ShoppingCartIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="mobx練習" />
+                </ListItem>
+              </Link>
+              <Link href="/useEffect" className={classes.link} passHref>
+                <ListItem button>
+                  <ListItemIcon>
+                    <ShoppingCartIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="hooks練習" />
+                </ListItem>
+              </Link>
+              <Link href="/calculation" className={classes.link} passHref>
+                <ListItem button>
+                  <ListItemIcon>
+                    <ShoppingCartIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="購入履歴" />
+                </ListItem>
+              </Link>
+            </List>
+          </Drawer>
+        )}
+        {isSignedIn ? (
+          <main className={classes.content}>
+            <div className={classes.appBarSpacer} />
+            <Container maxWidth="lg" className={classes.container}>
+              <Typography component="h2" variant="h5" color="inherit" noWrap className={classes.pageTitle}>
+                {title}
+              </Typography>
+              {children}
+              <Box pt={4}>
+                <Copyright />
+              </Box>
+            </Container>
+          </main>
+        ) : (
+          <main className={classes.signIn}>
             {children}
             <Box pt={4}>
               <Copyright />
             </Box>
-          </Container>
-        </main>
+          </main>
+        )}
       </div>
     </ThemeProvider>
   )
