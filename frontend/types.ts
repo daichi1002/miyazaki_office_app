@@ -1,7 +1,7 @@
 export type Product = {
   id: number
   title: string
-  num: number | undefined
-  price: number | undefined
+  num: number
+  price: number
   purchaseAt: any
 }

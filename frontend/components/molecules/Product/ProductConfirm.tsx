@@ -6,37 +6,22 @@ import { CREATE_HISTORY, CREATE_HISTORY_DETAIL } from '../../../graphql/mutation
 import React, { useState } from 'react'
 import axios from 'axios'
 import { ProgressBar } from '../../atom/ProgressBar'
+import { Product } from '../../../types'
 
-type Product = {
-  id: number
-  title: string
-  num: number
-  price: number
-  purchaseAt: String
+type Props = {
+  products: Product[]
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+  subtotal: number
+  setSubtotal: React.Dispatch<React.SetStateAction<number>>
 }
 
-const ProductConfirm = (props: any) => {
+const ProductConfirm = (props: Props) => {
   const useStyles = makeStyles(() => ({
     root: {
       paddingLeft: 50,
     },
   }))
   const classes = useStyles()
-
-  // const [subtotal, setSubTotal] = useState<number>(0)
-  // const sumPrice = () => {
-  //   props.products.forEach((product: Product) => {
-  //     const price = product.price
-  //     setSubTotal(subtotal + price)
-  //   })
-  // }
-
-  // const [subtotal, setSubTotal] = useState<number>(0)
-  let subtotal: number = 0
-  props.products.forEach((product: Product) => {
-    const price: number = product.price
-    subtotal + price
-  })
 
   // graphqlの保存処理（できてない）
   // const [createHistory, { error }] = useMutation(CREATE_HISTORY, {
@@ -50,21 +35,21 @@ const ProductConfirm = (props: any) => {
   // if (error) return <p>{error.message}</p>
 
   // axios
-  const createHistory = (history: Product) => {
+  const createHistory = (history: Product[]) => {
     axios.post('http://localhost:3000/histories/', { history }).then((res: any) => {
       console.log(res)
       if (res.status === 204) {
+        props.setSubtotal(0)
         props.setProducts([])
         console.log(props.products)
         return <ProgressBar />
       }
     })
   }
-
   return (
     <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
       <Grid item xs={6} className={classes.root}>
-        <h2>合計金額：{subtotal}円</h2>
+        <h2>合計金額：{props.subtotal}円</h2>
       </Grid>
       <Grid item xs={6} className={classes.root}>
         <Button

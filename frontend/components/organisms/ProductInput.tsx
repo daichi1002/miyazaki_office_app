@@ -15,9 +15,11 @@ import { Product } from '../../types'
 type Props = {
   products: Product[]
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+  subtotal: number
+  setSubtotal: React.Dispatch<React.SetStateAction<number>>
 }
 
-export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => {
+export const ProductInputArea = (props: Props) => {
   const useStyles = makeStyles(() => ({
     paper: {
       display: 'flex',
@@ -40,9 +42,9 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
   const classes = useStyles()
 
   const [name, setName] = useState('')
-  const [num, setNum] = useState<number | undefined>(undefined)
-  const [price, setPrice] = useState<number | undefined>(undefined)
-  const [count, setCount] = useState(products.length + 1)
+  const [num, setNum] = useState<number>(0)
+  const [price, setPrice] = useState<number>(0)
+  const [count, setCount] = useState(props.products.length + 1)
   const [purchaseAt, setPurchaseAt] = useState<String>('')
 
   const submit = () => {
@@ -54,11 +56,11 @@ export const ProductInputArea: React.FC<Props> = ({ setProducts, products }) => 
       price: price,
       purchaseAt: purchaseAt,
     }
-
-    setProducts([...products, newProduct])
+    props.setSubtotal(props.subtotal + parseInt(price))
     setName('')
-    setNum(undefined)
-    setPrice(undefined)
+    setNum(0)
+    setPrice(0)
+    props.setProducts([...props.products, newProduct])
   }
 
   const { loading, error, data } = useQuery(GET_ITEMMASTER)
