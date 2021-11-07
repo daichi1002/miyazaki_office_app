@@ -1,4 +1,4 @@
-import React, { useState, useContext, Fragment } from 'react'
+import { useState, useContext, Fragment } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import Cookies from 'js-cookie'
 import Link from 'next/dist/client/link'

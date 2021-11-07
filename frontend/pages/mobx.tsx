@@ -1,8 +1,6 @@
 import { Fragment, useState, useEffect } from 'react'
-import { action, observable } from 'mobx'
-import { observer, Provider } from 'mobx-react'
+import { observer } from 'mobx-react'
 import Button from '@material-ui/core/Button'
-import GenericTemplate from '../components/templates/GenericTemplates'
 import { useStores } from '../hooks/use-stores'
 
 const App = observer(() => {
@@ -11,7 +9,7 @@ const App = observer(() => {
 
   useEffect(() => {
     document.title = `${count}回クリックされました`
-  }, [])
+  }, [count])
 
   return (
     <Fragment>

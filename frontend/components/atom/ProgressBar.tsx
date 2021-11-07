@@ -1,10 +1,10 @@
 import { LinearProgress } from '@material-ui/core'
-import { Fragment } from 'react'
+import { Fragment, memo } from 'react'
 
-export const ProgressBar = () => {
+export const ProgressBar = memo(() => {
   return (
     <Fragment>
       <LinearProgress color="primary" />
     </Fragment>
   )
-}
+})

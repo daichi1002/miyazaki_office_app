@@ -17,11 +17,11 @@ type Props = {
 
 export const Form = observer((props: Props) => {
   const { loading, error, data } = useQuery(GET_ITEMMASTER)
-  const hundleReset = useCallback(() => {
-    setValue('')
-  }, [])
 
   const { date, setValue, setDate } = props
+  const hundleReset = useCallback(() => {
+    setValue('')
+  }, [setValue])
   if (loading) return <ProgressBar />
   if (error) return <p>{error.message}</p>
 

@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, memo } from 'react'
+import React, { useContext, Fragment } from 'react'
 import Link from 'next/link'
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
@@ -12,6 +12,9 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
+import { Calculate } from '@mui/icons-material'
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd'
+
 import Divider from '@material-ui/core/Divider'
 
 import { AuthContext } from '../../pages/_app'
@@ -91,26 +94,18 @@ export const SideBar = (props: Props) => {
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary="値入力" />
+                <ListItemText primary="" />
               </ListItem>
             </Link>
             <Link href="/ProductPage" passHref>
               <ListItem button>
                 <ListItemIcon>
-                  <ShoppingCartIcon />
+                  <LibraryAddIcon />
                 </ListItemIcon>
-                <ListItemText primary="商品" />
+                <ListItemText primary="商品追加" />
               </ListItem>
             </Link>
-            <Link href="/inventory" passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="在庫" />
-              </ListItem>
-            </Link>
-            <Link href="/mobx" passHref>
+            {/*             <Link href="/mobx" passHref>
               <ListItem button>
                 <ListItemIcon>
                   <ShoppingCartIcon />
@@ -125,11 +120,11 @@ export const SideBar = (props: Props) => {
                 </ListItemIcon>
                 <ListItemText primary="hooks練習" />
               </ListItem>
-            </Link>
+            </Link> */}
             <Link href="/calculation" passHref>
               <ListItem button>
                 <ListItemIcon>
-                  <ShoppingCartIcon />
+                  <Calculate />
                 </ListItemIcon>
                 <ListItemText primary="購入履歴" />
               </ListItem>
@@ -141,4 +136,4 @@ export const SideBar = (props: Props) => {
   )
 }
 
-export default memo(SideBar)
+export default SideBar

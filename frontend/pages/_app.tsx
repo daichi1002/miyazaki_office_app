@@ -1,4 +1,4 @@
-import React, { Fragment, createContext, useEffect, useState } from 'react'
+import { Fragment, createContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import { ApolloProvider } from '@apollo/client'
 import { CssBaseline } from '@material-ui/core'

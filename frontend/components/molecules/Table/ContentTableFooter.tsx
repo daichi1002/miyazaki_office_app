@@ -1,7 +1,7 @@
-import React from 'react'
+import { memo } from 'react'
 import { TableRow, TableFooter, TablePagination } from '@material-ui/core'
 
-export const ContentTableFooter = (props: any) => {
+export const ContentTableFooter = memo((props: any) => {
   const { data, rowsPerPage, page, onPageChange, onRowsPerPageChange } = props
 
   return (
@@ -27,4 +27,4 @@ export const ContentTableFooter = (props: any) => {
       </TableRow>
     </TableFooter>
   )
-}
+})
