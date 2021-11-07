@@ -1,4 +1,4 @@
-class HistoriesController < ApplicationController
+class Api::V1::HistoriesController < ApplicationController
   def index
     @history = History.all
     render json: @history
