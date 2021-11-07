@@ -64,7 +64,7 @@ export const ProductInputArea = (props: Props) => {
   }
 
   const { loading, error, data } = useQuery(GET_ITEMMASTER)
-  if (loading) return <ProgressBar />
+  if (loading) return <p>...loading</p>
   if (error) return <p>{error.message}</p>
 
   return (

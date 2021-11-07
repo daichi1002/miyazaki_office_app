@@ -5,21 +5,22 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    histroy_params.each do |param|
+    history_params.each do |param|
       param["user_id"] = 1
       history = History.new(param)
+      history.history_details.build
       if history.save!
         next
       else
-        render json: post.errors
+        render json: history.errors
         return
       end
     end
   end
 
-  def histroy_params
+  def history_params
     params.require(:history).map do |h|
-      h.permit(:title, :purchase_at)
+      h.permit(:title, :purchase_at, history_detail: [:price])
     end
   end
 end
