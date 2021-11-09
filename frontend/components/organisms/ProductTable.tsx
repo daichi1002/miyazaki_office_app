@@ -5,18 +5,19 @@ import { Table } from '@material-ui/core'
 import ProductListTitle from '../molecules/Product/ProductListTitle'
 import ProductList from '../molecules/Product/ProductList'
 import ProductConfirm from '../molecules/Product/ProductConfirm'
-import { Product } from '../../types'
+import { HistoryDetail, History } from '../../types'
 import React, { useState } from 'react'
 
 type Props = {
-  products: Product[]
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>
   subtotal: number
   setSubtotal: React.Dispatch<React.SetStateAction<number>>
+  setHistoryDetail: React.Dispatch<React.SetStateAction<HistoryDetail[]>>
+  historyDetail: HistoryDetail[]
+  history: History
 }
 
 const ProductTable = (props: Props) => {
-  const { products, setProducts, subtotal, setSubtotal } = props
+  const { subtotal, setSubtotal, historyDetail, setHistoryDetail, history } = props
   const useStyles = makeStyles(() => ({
     paper: {
       display: 'flex',
@@ -40,10 +41,16 @@ const ProductTable = (props: Props) => {
         </Grid>
         <Table>
           <ProductListTitle />
-          <ProductList setProducts={setProducts} products={products} />
+          <ProductList setHistoryDetail={setHistoryDetail} historyDetail={historyDetail} />
         </Table>
       </Grid>
-      <ProductConfirm setProducts={setProducts} products={products} subtotal={subtotal} setSubtotal={setSubtotal} />
+      <ProductConfirm
+        subtotal={subtotal}
+        setSubtotal={setSubtotal}
+        setHistoryDetail={setHistoryDetail}
+        historyDetail={historyDetail}
+        history={history}
+      />
     </Paper>
   )
 }

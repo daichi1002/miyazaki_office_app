@@ -1,7 +1,14 @@
-export type Product = {
+export type History = {
   id: number
+  userId: number
   title: string
-  num: number
-  price: number
   purchaseAt: any
+}
+
+export type HistoryDetail = {
+  id: number
+  historyId: number | null
+  content: string
+  price: number
+  num: number
 }

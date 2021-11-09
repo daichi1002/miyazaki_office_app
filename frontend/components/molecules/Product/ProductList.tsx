@@ -1,25 +1,25 @@
 import Button from '@material-ui/core/Button'
 import { TableCell, TableRow, TableBody } from '@material-ui/core'
-import { Product } from '../../../types'
+import { HistoryDetail } from '../../../types'
 
 const ProductList = (props: any) => {
-  const handleDelete = (product: Product) => {
-    props.setProducts((prev: any) => prev.filter((t: any) => t.id !== product.id))
+  const handleDelete = (historyDetail: HistoryDetail) => {
+    props.setHistoryDetail((prev: any) => prev.filter((t: any) => t.id !== historyDetail.id))
   }
 
   return (
     <TableBody>
-      {props.products.map((product: Product) => (
-        <TableRow hover key={product.id}>
+      {props.historyDetail.map((history: HistoryDetail) => (
+        <TableRow hover key={history.id}>
           <TableCell>
-            <Button variant="outlined" color="primary" onClick={() => handleDelete(product)}>
+            <Button variant="outlined" color="primary" onClick={() => handleDelete(history)}>
               削除
             </Button>
           </TableCell>
-          <TableCell>{product.title}</TableCell>
-          <TableCell>{product.num}</TableCell>
-          <TableCell>{product.price}</TableCell>
-          <TableCell>{product.purchaseAt}</TableCell>
+          <TableCell>{history.content}</TableCell>
+          <TableCell>{history.num}</TableCell>
+          <TableCell>{history.price}</TableCell>
+          {/* <TableCell>{product.purchaseAt}</TableCell> */}
         </TableRow>
       ))}
     </TableBody>

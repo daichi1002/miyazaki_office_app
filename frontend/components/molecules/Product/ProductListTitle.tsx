@@ -8,7 +8,6 @@ const ProductListTitle = () => {
         <TableCell>商品名</TableCell>
         <TableCell>個数</TableCell>
         <TableCell>金額</TableCell>
-        <TableCell>購入日</TableCell>
       </TableRow>
     </TableHead>
   )
