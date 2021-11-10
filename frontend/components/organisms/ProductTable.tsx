@@ -24,7 +24,7 @@ const ProductTable = (props: Props) => {
       overflow: 'auto',
       flexDirection: 'column',
       borderRadius: 20,
-      height: '70vh',
+      height: '65vh',
       width: '35vw',
     },
     title: {

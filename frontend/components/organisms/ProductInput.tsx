@@ -7,14 +7,16 @@ import { useState } from 'react'
 import { GET_ITEMMASTER } from '../../graphql/query'
 import { useQuery } from '@apollo/client'
 import SelectBox from '../atom/SelectBox'
-import { HistoryDetail } from '../../types'
+import { HistoryDetail, History } from '../../types'
 import AlertMessage from '../molecules/AlertMessage'
+import PurchaseDateRegistration from '../molecules/Product/PurchaseDateRegistration'
 
 type Props = {
   subtotal: number
   setSubtotal: React.Dispatch<React.SetStateAction<number>>
   setHistoryDetail: React.Dispatch<React.SetStateAction<HistoryDetail[]>>
   historyDetail: HistoryDetail[]
+  setHistory: React.Dispatch<React.SetStateAction<History>>
 }
 
 export const ProductInputArea = (props: Props) => {
@@ -24,7 +26,7 @@ export const ProductInputArea = (props: Props) => {
       overflow: 'auto',
       flexDirection: 'column',
       borderRadius: 20,
-      height: '70vh',
+      height: '65vh',
       width: '35vw',
     },
     body: {
@@ -86,7 +88,9 @@ export const ProductInputArea = (props: Props) => {
         <Grid item xs={12} className={classes.body}>
           <InputForm title="金額" onChange={setPrice} value={price} />
         </Grid>
-        <Grid item xs={6}></Grid>
+        <Grid item xs={6} className={classes.body}>
+          <PurchaseDateRegistration setHistory={props.setHistory} />
+        </Grid>
         <Grid item xs={6} className={classes.body}>
           <Button variant="outlined" color="primary" component="label" onClick={submit}>
             入力確認

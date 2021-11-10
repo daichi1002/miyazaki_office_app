@@ -14,7 +14,6 @@ const ProductPage = () => {
   return (
     <Container maxWidth="lg">
       <h1>購入品登録</h1>
-      <PurchaseDateRegistration setHistory={setHistory} />
       <Grid container spacing={10}>
         <Grid item xs={12} md={6} lg={6}>
           <ProductInput
@@ -22,6 +21,7 @@ const ProductPage = () => {
             setSubtotal={setSubtotal}
             setHistoryDetail={setHistoryDetail}
             historyDetail={historyDetail}
+            setHistory={setHistory}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
