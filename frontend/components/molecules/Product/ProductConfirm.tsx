@@ -36,15 +36,19 @@ const ProductConfirm = (props: Props) => {
   // if (error) return <p>{error.message}</p>
 
   // axios
-  const createHistory = (history: HistoryDetail[]) => {
-    // historyをキー、historyDetailをバリューの形に変換する
+  const createHistory = (historyDetail: HistoryDetail[], history: History) => {
     axios.post('http://localhost:3000/api/v1/histories/', { history }).then((res: any) => {
       console.log(res)
-      if (res.status === 204) {
-        props.setSubtotal(0)
-        props.setHistoryDetail([])
-        console.log(props.historyDetail)
-        return <ProgressBar />
+      if (res.status === 200) {
+        axios.post('http://localhost:3000/api/v1/history_details/', { historyDetail }).then((res: any) => {
+          console.log(res)
+          if (res.status === 204) {
+            props.setSubtotal(0)
+            props.setHistoryDetail([])
+            console.log(props.historyDetail)
+            return <ProgressBar />
+          }
+        })
       }
     })
   }
@@ -59,7 +63,7 @@ const ProductConfirm = (props: Props) => {
           color="primary"
           component="label"
           onClick={() => {
-            createHistory(props.historyDetail)
+            createHistory(props.historyDetail, props.history)
           }}
         >
           確定

@@ -19,7 +19,7 @@ const PurchaseDateRegistration = (props: Props) => {
   const [open, setOpen] = useState(false)
   const [title, setTitle] = useState('')
   const [purchaseAt, setPurchaseAt] = useState<String>('')
-  const [userId, setUserId] = useState(0)
+  const [userId, setUserId] = useState(1)
   const userInformation = useContext(AuthContext)
 
   const handleClickOpen = () => {
@@ -39,11 +39,12 @@ const PurchaseDateRegistration = (props: Props) => {
       purchaseAt: purchaseAt,
     }
     props.setHistory(newHistory)
+    setOpen(false)
   }
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" component="label" onClick={handleClickOpen}>
         初期登録
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -55,14 +56,7 @@ const PurchaseDateRegistration = (props: Props) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>戻る</Button>
-          <Button
-            onClick={() => {
-              handleClose
-              submit
-            }}
-          >
-            確定
-          </Button>
+          <Button onClick={submit}>確定</Button>
         </DialogActions>
       </Dialog>
     </div>

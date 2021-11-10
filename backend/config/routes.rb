@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         registrations: 'api/v1/auth/registrations'
       }
       resources :histories
+      resources :history_details
       namespace :auth do
         resources :sessions, only: %i[index]
       end

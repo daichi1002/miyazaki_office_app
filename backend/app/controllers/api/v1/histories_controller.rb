@@ -1,26 +1,16 @@
 class Api::V1::HistoriesController < ApplicationController
-  def index
-    @history = History.all
-    render json: @history
-  end
 
   def create
-    history_params.each do |param|
-      param["user_id"] = 1
-      history = History.new(param)
-      history.history_details.build
-      if history.save!
-        next
-      else
-        render json: history.errors
-        return
-      end
+    history = History.new(history_params)
+    # history.history_details.build
+    if history.save!
+      render json: history
+    else
+      render json: history.errors
     end
   end
 
   def history_params
-    params.require(:history).map do |h|
-      h.permit(:title, :purchase_at, history_detail: [:price])
-    end
+    params.require(:history).permit(:title, :purchase_at, :user_id)
   end
 end

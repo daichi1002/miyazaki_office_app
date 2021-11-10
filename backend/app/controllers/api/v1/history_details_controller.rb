@@ -1,0 +1,25 @@
+class Api::V1::HistoryDetailsController < ApplicationController
+  def create
+    history = History.last
+    history_params.each do |param|
+      param["history_id"] = history.id
+      history_detail = HistoryDetail.create!(history_id: param[:history_id], content: param[:content], price: param[:price])
+      if HistoryDetail.where(id: history_detail.id).exists?
+        item_master = ItemMaster.find_by(name: param[:content])
+        if item_master.present?
+          item_master.increment!(:required_stock, param[:num].to_i)
+        end
+        render json: history_detail
+      else
+        render json: history_detail.errors
+        return
+      end
+    end
+  end
+
+  def history_params
+    params.require(:history_detail).map do |h|
+      h.permit(:history_id, :content, :price, :num)
+    end
+  end
+end
