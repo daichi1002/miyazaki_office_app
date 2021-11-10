@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { ProgressBar } from '../../atom/ProgressBar'
 import { HistoryDetail, History } from '../../../types'
+import AlertMessage from '../AlertMessage'
 
 type Props = {
   subtotal: number
@@ -34,15 +35,19 @@ const ProductConfirm = (props: Props) => {
   //   },
   // })
   // if (error) return <p>{error.message}</p>
-
+  const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
   // axios
   const createHistory = (historyDetail: HistoryDetail[], history: History) => {
+    if (history.id === 0) {
+      setAlertMessageOpen(true)
+      return
+    }
     axios.post('http://localhost:3000/api/v1/histories/', { history }).then((res: any) => {
       console.log(res)
       if (res.status === 200) {
         axios.post('http://localhost:3000/api/v1/history_details/', { historyDetail }).then((res: any) => {
           console.log(res)
-          if (res.status === 204) {
+          if (res.status === 200) {
             props.setSubtotal(0)
             props.setHistoryDetail([])
             console.log(props.historyDetail)
@@ -69,6 +74,12 @@ const ProductConfirm = (props: Props) => {
           確定
         </Button>
       </Grid>
+      <AlertMessage // エラーが発生した場合はアラートを表示
+        open={alertMessageOpen}
+        setOpen={setAlertMessageOpen}
+        severity="error"
+        message="初期登録を入力してください"
+      />
     </Grid>
   )
 }

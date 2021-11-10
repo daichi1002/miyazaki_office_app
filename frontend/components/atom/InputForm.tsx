@@ -3,7 +3,7 @@ import { TextField } from '@material-ui/core'
 
 type Props = {
   title: string
-  value: number | string
+  value: number
   onChange: (value: any) => void
 }
 

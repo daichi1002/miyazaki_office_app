@@ -9,6 +9,7 @@ import { useQuery } from '@apollo/client'
 import { ProgressBar } from '../atom/ProgressBar'
 import SelectBox from '../atom/SelectBox'
 import { HistoryDetail } from '../../types'
+import AlertMessage from '../molecules/AlertMessage'
 
 type Props = {
   subtotal: number
@@ -44,8 +45,13 @@ export const ProductInputArea = (props: Props) => {
   const [price, setPrice] = useState<number>(0)
   const [count, setCount] = useState(props.historyDetail.length + 1)
 
+  const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
+
   const submit = () => {
-    // setUserId(userInformation.currentUser.id)
+    if (content === '' || num === 0 || price === 0) {
+      setAlertMessageOpen(true)
+      return
+    }
     setCount(count + 1)
     // historyDetail
     const newHistoryDetail: HistoryDetail = {
@@ -58,6 +64,7 @@ export const ProductInputArea = (props: Props) => {
     props.setSubtotal(props.subtotal + parseInt(price))
     setContent('')
     setPrice(0)
+    setNum(0)
     props.setHistoryDetail([...props.historyDetail, newHistoryDetail])
   }
 
@@ -87,6 +94,12 @@ export const ProductInputArea = (props: Props) => {
           </Button>
         </Grid>
       </Grid>
+      <AlertMessage // エラーが発生した場合はアラートを表示
+        open={alertMessageOpen}
+        setOpen={setAlertMessageOpen}
+        severity="error"
+        message="未入力の項目があります"
+      />
     </Paper>
   )
 }
