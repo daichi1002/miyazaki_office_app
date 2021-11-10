@@ -13,7 +13,7 @@ const ProductPage = () => {
   const [historyDetail, setHistoryDetail] = useState<HistoryDetail[]>([])
   return (
     <Container maxWidth="lg">
-      <h1>購入品登録</h1>
+      <h1>購入登録</h1>
       <Grid container spacing={10}>
         <Grid item xs={12} md={6} lg={6}>
           <ProductInput
