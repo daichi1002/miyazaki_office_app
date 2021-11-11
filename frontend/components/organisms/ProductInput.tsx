@@ -62,7 +62,7 @@ export const ProductInputArea = (props: Props) => {
       price: price,
       num: num,
     }
-    props.setSubtotal(props.subtotal + parseInt(price))
+    props.setSubtotal(props.subtotal + price)
     setContent('')
     setPrice(0)
     setNum(0)
