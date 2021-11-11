@@ -1,7 +1,7 @@
 import { createTheme } from '@material-ui/core/styles'
 import { red } from '@material-ui/core/colors'
 
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
     //primary: {
     //  main: '#556cd6',
@@ -18,4 +18,4 @@ const theme = createTheme({
   },
 })
 
-// export default theme
+export default theme
