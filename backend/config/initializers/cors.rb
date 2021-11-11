@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost:8000', 'miyazaki-office-app-gaccjo8j4-daichi1002.vercel.app'
+    origins 'localhost:8000', 'miyazaki-office-app.vercel.app'
 
     resource '*',
       headers: :any,
