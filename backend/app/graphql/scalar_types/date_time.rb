@@ -1,4 +1,4 @@
-# class ScalarTypes::DateTime < GraphQL::Schema::Scalar
+class ScalarTypes::DateTime < GraphQL::Schema::Scalar
 #   description '日付型'
 
 #   def self.coerce_input(value, _context = nil)
@@ -8,4 +8,4 @@
 #   def self.coerce_result(value, _context)
 #     I18n.l(value, format: :default)
 #   end
-# end
+end
