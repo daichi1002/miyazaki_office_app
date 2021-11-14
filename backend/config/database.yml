@@ -49,9 +49,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  # adapter: mysql2
-  # encoding: utf8mb4
-  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <<: *default
   # database: heroku_6b9dcfcd2275e00
   # username: b69cd4a5491585
   # password: <%= ENV['MIYAZAKI_OFFICE_APP_DATABASE_PASSWORD'] %>
