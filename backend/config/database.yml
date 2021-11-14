@@ -53,4 +53,3 @@ production:
   database: miyazaki_office_app_production
   username: miyazaki_office_app
   password: <%= ENV['MIYAZAKI_OFFICE_APP_DATABASE_PASSWORD'] %>
-  url: <%= ENV['DATABASE_URL'] %>
