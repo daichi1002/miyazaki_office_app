@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  host: db
+  host: localhost
 
 development:
   <<: *default
@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: miyazaki_office_app_production
-  username: miyazaki_office_app
-  password: <%= ENV['MIYAZAKI_OFFICE_APP_DATABASE_PASSWORD'] %>
+  # database: heroku_6b9dcfcd2275e00
+  # username: b69cd4a5491585
+  # password: <%= ENV['MIYAZAKI_OFFICE_APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
