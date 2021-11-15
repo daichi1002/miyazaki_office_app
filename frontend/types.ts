@@ -9,6 +9,6 @@ export type HistoryDetail = {
   id: number
   historyId: number | null
   content: string
-  price: number
-  num: number
+  price: string
+  num: string
 }

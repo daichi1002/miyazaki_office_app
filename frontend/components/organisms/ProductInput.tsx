@@ -42,14 +42,14 @@ export const ProductInputArea = (props: Props) => {
   const classes = useStyles()
 
   const [content, setContent] = useState('')
-  const [num, setNum] = useState<number>(0)
-  const [price, setPrice] = useState<number>(0)
+  const [num, setNum] = useState('')
+  const [price, setPrice] = useState('')
   const [count, setCount] = useState(props.historyDetail.length + 1)
 
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
 
   const submit = () => {
-    if (content === '' || num === 0 || price === 0) {
+    if (content === '' || num === '' || price === '') {
       setAlertMessageOpen(true)
       return
     }
@@ -62,10 +62,9 @@ export const ProductInputArea = (props: Props) => {
       price: price,
       num: num,
     }
-    props.setSubtotal(props.subtotal + price)
-    setContent('')
-    setPrice(0)
-    setNum(0)
+    props.setSubtotal(props.subtotal + Number(price))
+    setPrice('')
+    setNum('')
     props.setHistoryDetail([...props.historyDetail, newHistoryDetail])
   }
 
