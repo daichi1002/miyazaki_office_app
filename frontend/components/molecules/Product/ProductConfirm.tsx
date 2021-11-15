@@ -38,7 +38,7 @@ const ProductConfirm = (props: Props) => {
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
   // axios
   const createHistory = (historyDetail: HistoryDetail[], history: History) => {
-    if (history.id === 0) {
+    if (history.purchaseAt === '') {
       setAlertMessageOpen(true)
       return
     }
