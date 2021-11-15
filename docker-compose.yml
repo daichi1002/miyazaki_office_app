@@ -38,5 +38,7 @@ services:
     ports:
       - "8000:3000"
     stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 volumes:
   mysql-data:
