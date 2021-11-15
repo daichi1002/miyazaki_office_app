@@ -1,5 +1,4 @@
 export type History = {
-  id: number
   userId: number
   title: string
   purchaseAt: any

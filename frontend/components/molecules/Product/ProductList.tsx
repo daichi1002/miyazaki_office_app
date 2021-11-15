@@ -5,6 +5,7 @@ import { HistoryDetail } from '../../../types'
 const ProductList = (props: any) => {
   const handleDelete = (historyDetail: HistoryDetail) => {
     props.setHistoryDetail((prev: any) => prev.filter((t: any) => t.id !== historyDetail.id))
+    props.setSubtotal(props.subtotal - Number(historyDetail.price))
   }
 
   return (
@@ -19,7 +20,6 @@ const ProductList = (props: any) => {
           <TableCell>{history.content}</TableCell>
           <TableCell>{history.num}</TableCell>
           <TableCell>{history.price}</TableCell>
-          {/* <TableCell>{product.purchaseAt}</TableCell> */}
         </TableRow>
       ))}
     </TableBody>
