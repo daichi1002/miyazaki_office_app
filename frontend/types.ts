@@ -1,5 +1,5 @@
 export type History = {
-  userId: number
+  userId: number | undefined
   title: string
   purchaseAt: any
 }
