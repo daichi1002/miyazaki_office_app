@@ -9,7 +9,7 @@ import PurchaseDateRegistration from '../components/molecules/Product/PurchaseDa
 const ProductPage = () => {
   const [subtotal, setSubtotal] = useState<number>(0)
 
-  const [history, setHistory] = useState<History>({ id: 0, userId: 0, title: '', purchaseAt: '' })
+  const [history, setHistory] = useState<History>({ userId: 0, title: '', purchaseAt: '' })
   const [historyDetail, setHistoryDetail] = useState<HistoryDetail[]>([])
   return (
     <Container maxWidth="lg">

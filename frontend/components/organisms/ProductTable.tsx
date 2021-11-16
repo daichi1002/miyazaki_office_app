@@ -41,7 +41,12 @@ const ProductTable = (props: Props) => {
         </Grid>
         <Table>
           <ProductListTitle />
-          <ProductList setHistoryDetail={setHistoryDetail} historyDetail={historyDetail} />
+          <ProductList
+            setHistoryDetail={setHistoryDetail}
+            historyDetail={historyDetail}
+            setSubtotal={setSubtotal}
+            subtotal={subtotal}
+          />
         </Table>
       </Grid>
       <ProductConfirm

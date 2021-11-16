@@ -10,6 +10,7 @@ import InputDate from '../../atom/InputDate'
 import { History } from '../../../types'
 import { AuthContext } from '../../../pages/_app'
 import UploadPicture from '../../atom/UploadPicture'
+import { User } from '../../../interfaces/index'
 
 type Props = {
   setHistory: React.Dispatch<React.SetStateAction<History>>
@@ -19,7 +20,7 @@ const PurchaseDateRegistration = (props: Props) => {
   const [open, setOpen] = useState(false)
   const [title, setTitle] = useState('')
   const [purchaseAt, setPurchaseAt] = useState<String>('')
-  const [userId, setUserId] = useState(1)
+  const [userId, setUserId] = useState<number | undefined>(1)
   const userInformation = useContext(AuthContext)
 
   const handleClickOpen = () => {
@@ -31,10 +32,9 @@ const PurchaseDateRegistration = (props: Props) => {
   }
 
   const submit = () => {
-    // setUserId(userInformation.currentUser.id)
+    setUserId(userInformation.currentUser?.id)
     const newHistory: History = {
-      id: 1,
-      userId: 1,
+      userId: userId,
       title: title,
       purchaseAt: purchaseAt,
     }

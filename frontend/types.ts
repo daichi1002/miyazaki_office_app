@@ -1,6 +1,5 @@
 export type History = {
-  id: number
-  userId: number
+  userId: number | undefined
   title: string
   purchaseAt: any
 }
@@ -9,6 +8,6 @@ export type HistoryDetail = {
   id: number
   historyId: number | null
   content: string
-  price: number
-  num: number
+  price: string
+  num: string
 }
