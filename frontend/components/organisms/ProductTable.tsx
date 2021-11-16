@@ -25,7 +25,7 @@ const ProductTable = (props: Props) => {
       flexDirection: 'column',
       borderRadius: 20,
       height: '65vh',
-      width: '35vw',
+      width: '100%',
     },
     title: {
       paddingLeft: 50,

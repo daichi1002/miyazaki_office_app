@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid'
 import ProductInput from '../components/organisms/ProductInput'
 import ProductTable from '../components/organisms/ProductTable'
 import { History, HistoryDetail } from '../types'
-import PurchaseDateRegistration from '../components/molecules/Product/PurchaseDateRegistration'
 
 const ProductPage = () => {
   const [subtotal, setSubtotal] = useState<number>(0)
