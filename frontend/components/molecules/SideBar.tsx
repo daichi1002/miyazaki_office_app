@@ -7,7 +7,6 @@ import clsx from 'clsx'
 import List from '@material-ui/core/List'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import HomeIcon from '@material-ui/icons/Home'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -105,22 +104,6 @@ export const SideBar = (props: Props) => {
                 <ListItemText primary="商品追加" />
               </ListItem>
             </Link>
-            {/*             <Link href="/mobx" passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="mobx練習" />
-              </ListItem>
-            </Link>
-            <Link href="/useEffect" passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <ShoppingCartIcon />
-                </ListItemIcon>
-                <ListItemText primary="hooks練習" />
-              </ListItem>
-            </Link> */}
             <Link href="/calculation" passHref>
               <ListItem button>
                 <ListItemIcon>

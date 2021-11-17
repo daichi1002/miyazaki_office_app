@@ -38,6 +38,9 @@ export const ProductInputArea = (props: Props) => {
     title: {
       paddingLeft: 50,
     },
+    button: {
+      paddingTop: 30,
+    },
   }))
   const classes = useStyles()
 
@@ -81,16 +84,17 @@ export const ProductInputArea = (props: Props) => {
         <Grid item xs={12} className={classes.body}>
           <SelectBox title="商品名" select={data.itemMasters} onChange={setContent} value={content} />
         </Grid>
+
         <Grid item xs={12} className={classes.body}>
           <InputForm title="個数" onChange={setNum} value={num} />
         </Grid>
         <Grid item xs={12} className={classes.body}>
           <InputForm title="金額" onChange={setPrice} value={price} />
         </Grid>
-        <Grid item xs={6} className={classes.body}>
+        <Grid container item xs={6} md={6} lg={6} justifyContent="space-around" className={classes.button}>
           <PurchaseDateRegistration setHistory={props.setHistory} />
         </Grid>
-        <Grid item xs={6} className={classes.body}>
+        <Grid container item xs={6} md={6} lg={6} justifyContent="space-around" className={classes.button}>
           <Button variant="outlined" color="primary" component="label" onClick={submit}>
             入力確認
           </Button>
