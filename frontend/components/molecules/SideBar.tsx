@@ -1,6 +1,6 @@
 import React, { useContext, Fragment } from 'react'
 import Link from 'next/link'
-
+import Grid from '@material-ui/core/Grid'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import clsx from 'clsx'
@@ -89,14 +89,6 @@ export const SideBar = (props: Props) => {
           <Divider />
           <List>
             <Link href="/" passHref>
-              <ListItem button>
-                <ListItemIcon>
-                  <HomeIcon />
-                </ListItemIcon>
-                <ListItemText primary="" />
-              </ListItem>
-            </Link>
-            <Link href="/ProductPage" passHref>
               <ListItem button>
                 <ListItemIcon>
                   <LibraryAddIcon />
