@@ -27,15 +27,15 @@ export const Form = observer((props: Props) => {
 
   return (
     <Grid container direction="row" alignItems="center">
-      <Grid item xs={8} md={8} lg={8}>
+      <Grid item xs={12} md={8} lg={8}>
         <TotalPrice date={date} />
       </Grid>
-      <Grid item xs={4} md={4} lg={4}>
+      <Grid item xs={12} md={4} lg={4}>
         <Calendar title="日付" onChange={setDate} />
       </Grid>
 
       <Grid container direction="row" spacing={2} justifyContent="flex-end" alignItems="flex-end">
-        <Grid item xs={4} md={4} lg={4}>
+        <Grid item xs={12} md={4} lg={4}>
           <PullDown id={data.id} title="項目選択" select={data.itemMasters} setValue={setValue} />
         </Grid>
         <Grid item>
