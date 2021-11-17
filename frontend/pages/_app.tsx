@@ -30,7 +30,7 @@ export const MyApp = ({ Component, pageProps }: AppProps) => {
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser()
-      if (res?.data.isLogin === true) {
+      if (res?.data.is_login === true) {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data)
       }
