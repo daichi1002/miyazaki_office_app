@@ -59,10 +59,10 @@ const ProductConfirm = (props: Props) => {
   }
   return (
     <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
-      <Grid item xs={6} className={classes.root}>
-        <h2>合計金額：{props.subtotal}円</h2>
+      <Grid container item xs={12} md={6} lg={6} justifyContent="space-around">
+        <h2>合計：{props.subtotal}円</h2>
       </Grid>
-      <Grid item xs={6} className={classes.root}>
+      <Grid container item xs={12} md={6} lg={6} justifyContent="space-around">
         <Button
           variant="contained"
           color="primary"

@@ -24,10 +24,10 @@ const InputDate = (props: any) => {
 
   return (
     <Grid container direction="row" alignItems="center">
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4} lg={4}>
         {props.title}
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12} md={8} lg={8}>
         <MuiPickersUtilsProvider utils={ExtendedUtils} locale={jaLocale}>
           <DatePicker
             label="購入日"
