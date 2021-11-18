@@ -39,10 +39,13 @@ const ProductConfirm = (props: Props) => {
   const [registrationMessageOpen, setRegistrationMessageOpen] = useState<boolean>(false)
   // axios
   const resolvedServer = (() => {
-    if (process.env.Server) {
-      return process.env.Server
+    if (process.env.isProd) {
+      return process.env.server
     }
-    return 'http://localhost:3000'
+    // dev
+    // return 'http://localhost:3000'
+    // prod
+    return 'https://miyazakiofficeapp.herokuapp.com'
   })()
 
   const Axios = axios.create({ baseURL: resolvedServer, timeout: 5000 })
