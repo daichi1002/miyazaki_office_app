@@ -29,7 +29,7 @@ const AlertMessage = ({ open, setOpen, severity, message }: AlertMessageProps) =
         onClose={handleCloseAlertMessage}
       >
         <Alert onClose={handleCloseAlertMessage} severity={severity}>
-          <AlertTitle>エラー</AlertTitle>
+          <AlertTitle>{severity}</AlertTitle>
           {message}
         </Alert>
       </Snackbar>

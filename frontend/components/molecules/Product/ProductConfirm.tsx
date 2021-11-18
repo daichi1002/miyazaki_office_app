@@ -36,6 +36,7 @@ const ProductConfirm = (props: Props) => {
   // })
   // if (error) return <p>{error.message}</p>
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
+  const [registrationMessageOpen, setRegistrationMessageOpen] = useState<boolean>(false)
   // axios
   const resolvedServer = (() => {
     if (process.env.Server) {
@@ -60,7 +61,7 @@ const ProductConfirm = (props: Props) => {
             props.setSubtotal(0)
             props.setHistoryDetail([])
             console.log(props.historyDetail)
-            return <ProgressBar />
+            setRegistrationMessageOpen(true)
           }
         })
       }
@@ -88,6 +89,12 @@ const ProductConfirm = (props: Props) => {
         setOpen={setAlertMessageOpen}
         severity="error"
         message="初期登録を入力してください"
+      />
+      <AlertMessage
+        open={registrationMessageOpen}
+        setOpen={setRegistrationMessageOpen}
+        severity="success"
+        message="商品登録が完了しました"
       />
     </Grid>
   )
