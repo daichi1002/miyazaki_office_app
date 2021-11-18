@@ -37,15 +37,24 @@ const ProductConfirm = (props: Props) => {
   // if (error) return <p>{error.message}</p>
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
   // axios
+  const resolvedServer = (() => {
+    if (process.env.Server) {
+      return process.env.Server
+    }
+    return 'http://localhost:3000'
+  })()
+
+  const Axios = axios.create({ baseURL: resolvedServer, timeout: 5000 })
+
   const createHistory = (historyDetail: HistoryDetail[], history: History) => {
     if (history.purchaseAt === '') {
       setAlertMessageOpen(true)
       return
     }
-    axios.post('http://localhost:3000/api/v1/histories/', { history }).then((res: any) => {
+    Axios.post('/api/v1/histories/', { history }).then((res: any) => {
       console.log(res)
       if (res.status === 200) {
-        axios.post('http://localhost:3000/api/v1/history_details/', { historyDetail }).then((res: any) => {
+        Axios.post('/api/v1/history_details/', { historyDetail }).then((res: any) => {
           console.log(res)
           if (res.status === 204) {
             props.setSubtotal(0)
