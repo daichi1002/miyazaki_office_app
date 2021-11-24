@@ -21,6 +21,7 @@ class Api::V1::HistoryDetailsController < ApplicationController
         i.increment(:stock_quantity, param[:num].to_i)
         i.save!
       end
+      item_master.touch
     end
   end
 
