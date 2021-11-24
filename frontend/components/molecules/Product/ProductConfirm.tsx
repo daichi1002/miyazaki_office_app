@@ -37,6 +37,7 @@ const ProductConfirm = (props: Props) => {
   // if (error) return <p>{error.message}</p>
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
   const [registrationMessageOpen, setRegistrationMessageOpen] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
   // axios
   const resolvedServer = (() => {
     if (process.env.isProd) {
@@ -50,12 +51,14 @@ const ProductConfirm = (props: Props) => {
 
   const Axios = axios.create({ baseURL: resolvedServer, timeout: 5000 })
 
-  const createHistory = (historyDetail: HistoryDetail[], history: History) => {
+  const createHistory = async (historyDetail: HistoryDetail[], history: History) => {
+    if (loading) return
+    setLoading(true)
     if (history.purchaseAt === '') {
       setAlertMessageOpen(true)
       return
     }
-    Axios.post('/api/v1/histories/', { history }).then((res: any) => {
+    await Axios.post('/api/v1/histories/', { history }).then((res: any) => {
       console.log(res)
       if (res.status === 200) {
         Axios.post('/api/v1/history_details/', { historyDetail }).then((res: any) => {
@@ -69,6 +72,7 @@ const ProductConfirm = (props: Props) => {
         })
       }
     })
+    setLoading(false)
   }
   return (
     <Grid container direction="row" justifyContent="flex-end" alignItems="flex-end">
@@ -80,6 +84,7 @@ const ProductConfirm = (props: Props) => {
           variant="contained"
           color="primary"
           component="label"
+          disabled={loading}
           onClick={() => {
             createHistory(props.historyDetail, props.history)
           }}
